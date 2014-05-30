@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Simple CMS</title>
+	  <%= stylesheet_link_tag('application', :media => 'all') %>
+	 <%= javascript_include_tag('public') %>
+	<style>
+		#main {font-size: 20px; margin: 1em;}
+	</style>
+
+	</head>
+	<body>
+		<div id="header">
+			<h1>Demo Area</h1>
+		</div>
+		<div id='main'>
+			<!-- before yield -->
+			<%= yield %>
+			<!-- after yield -->
+		</div>
+	</body>
+</html>

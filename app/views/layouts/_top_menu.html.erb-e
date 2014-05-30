@@ -1,0 +1,28 @@
+<ul>
+	<li><%= link_to("Home", 
+	{:action => 'index'}) %>
+	<% @subjects.each do |subject| %>
+	<li>
+		<%= link_to(subject.name, {:action => 'show_pages',
+		 :subject_id => subject.id}) %>
+		<ul>
+			<% subject.pages.visible.sorted.each do |page| %>
+				<li><%= link_to(page.name, 
+					{:action =>'show', :permalink =>
+					page.permalink}) %>
+					<ul>
+						<% page.sections.visible.sorted.each do |section| %>
+							<li><%= link_to(section.name, {:action => 'show', 
+								:permalink => page.permalink, 
+								:anchor => section.name}) %></li>
+						<% end %>
+					</ul>
+				</li>
+			<% end %>
+		</ul>
+	</li>
+	<% end %>
+	<li><a class="pipe" href="#"> | </a></li>
+	<li><%= link_to('Admin', {:controller => 'access', 
+		:action => 'index'}) %>
+</ul>

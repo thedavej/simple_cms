@@ -1,0 +1,22 @@
+<h1>Demo#index</h1>
+<p>Hello from Index!</p>
+<br />
+<a href="/demo/hello.html"> Hello Link 1 </a>
+<br />
+<%= link_to('Hello Link 2' , {:action => 'hello'}) %>
+<br />
+<%= link_to('Hello Link with Parameters' , {:action => 'hello' , 
+	:id => 3, :page => 220}) %>
+<br />
+<br />
+<%= link_to('Go to Subjects', {:controller => 'subjects', :action => 'index'}) %>
+<br />
+<%= link_to('Go to Pages', {:controller => 'pages', :action => 'index'}) %>
+<br />
+<%= link_to('Go to Sections', {:controller => 'sections', :action => 'index'}) %>
+<br />
+<br />
+<%= link_to('Roar', '#', :onclick => "jsRoar('JavaScript'); return true;") %>
+
+<!-- <javascript_tag("jsRoar('Rails');")  -->
+

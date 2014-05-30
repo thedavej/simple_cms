@@ -1,0 +1,13 @@
+<% @page_title = @subject.name %>
+
+<div id="main-feature">
+	<h2 class="large"><%= @subject.name %> </h2>
+			<ul>
+				<% @subject.pages.visible.sorted.each do |page| %>
+				<li><%= link_to_unless_current(page.name, 
+					{:action =>'show', :permalink =>
+				page.permalink}) %></li>
+				<% end %>
+			</ul>
+</div>
+
