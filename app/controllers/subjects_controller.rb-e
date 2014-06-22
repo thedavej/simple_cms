@@ -69,4 +69,5 @@ class SubjectsController < ApplicationController
       # allows listed params to be mass assigned.
      params.require(:subject).permit(:name, :position, :visible)
    end
+   # This is a test
 end

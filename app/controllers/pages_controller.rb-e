@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def all_index
-    @pages = Page.sorted_by_page
+    @pages = Page.sorted
     @subject = Subject.find(1)
   end
 

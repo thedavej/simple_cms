@@ -17,3 +17,6 @@
 
 # Ignore image assets.
 /assets/images/
+
+# Ignoe sublime workspace data
+/simple_cms.sublime-workspace
