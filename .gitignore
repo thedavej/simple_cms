@@ -20,3 +20,6 @@
 
 # Ignoe sublime workspace data
 /simple_cms.sublime-workspace
+
+# Ignore codekit files
+/config.codekit

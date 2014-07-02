@@ -12,9 +12,6 @@
  *  
  *
  
- *= require typebase
- *= require public
- *= require admin
  *= require_tree
  *= require_self
  */
