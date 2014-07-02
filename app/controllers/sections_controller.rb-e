@@ -70,13 +70,13 @@ class SectionsController < ApplicationController
   end
 
   def destroy
-    section = Section.find(params[:id]).destroy
+    @section = Section.find(params[:id]).destroy
       @editor = AdminUser.find(session[:user_id])
-      @time = section.updated_at.to_s
+      @time = @section.updated_at.to_s
       SectionEdit.create(:admin_user_id => @editor.id,
-       :section_id => section.id, :summary => 
-       @editor.name + " deleted '#{section.name}' with id: '#{@section.id}' at " + @time)
-    flash[:notice] = "Section '#{section.name}' deleted successfully."
+       :section_id => @section.id, :summary => 
+       @editor.name + " deleted '#{@section.name}' with id: '#{@section.id}' at " + @time)
+    flash[:notice] = "Section '#{@section.name}' deleted successfully."
     redirect_to(:action => 'index', :page_id => @page.id)
   end
 
