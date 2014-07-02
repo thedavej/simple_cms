@@ -11,7 +11,14 @@ gem 'acts_as_list', '~> 0.4.0'
 gem 'awesome_print', '~> 1.2.0'
 
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 4.0.3'
+
+# Use Bootstrap-Sass
+gem 'bootstrap-sass', '~> 3.2.0'
+
+# Use Autoprefixer for Vendor CSS
+gem 'autoprefixer-rails'
+
 # Use Uglifier as compressor for JavaScript assets
 # gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
