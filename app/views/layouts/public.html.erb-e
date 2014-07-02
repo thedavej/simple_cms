@@ -8,11 +8,8 @@
 	<body>
 		<a id="top"></a>
 		<!-- Navbar -->
-		<div id="nav-wrapper">
-			<nav>
-				 <%= render(:partial => 'layouts/top_menu') %>
-			</nav>
-		</div>
+				 <%= render(:partial => 'layouts/bs_menu') %>
+		
 		<div id="wrapper">
 			<div id="main">
 				<!-- <div id="navigation">Old Nav</div> -->
