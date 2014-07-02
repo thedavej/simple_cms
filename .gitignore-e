@@ -23,3 +23,6 @@
 
 # Ignore codekit files
 /config.codekit
+
+# Ignore Sass cache
+/app/assets/stylesheets/.sass-cache
