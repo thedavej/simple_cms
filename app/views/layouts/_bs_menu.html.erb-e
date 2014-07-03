@@ -11,15 +11,15 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active">
-							<%= link_to("Home", {:action => 'index'}) %>
-						</li>
+						<li><%= link_to("Home", 
+	{:action => 'index'}) %></li>
 							<% @subjects.each do |subject| %>
 								<li class="dropdown">
 									<%= link_to(subject.name, {:action => 'show_pages', :subject_id => subject.id}, :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}) %>
 									<ul class="dropdown-menu" role="menu">
 										<% subject.pages.visible.sorted.each do |page| %>
-											<li><%= link_to(page.name, 
+											<li>
+												<%= link_to(page.name, 
 												{:action =>'show', :permalink =>
 												page.permalink}) %>
 											</li>
@@ -27,7 +27,53 @@
 									</ul>
 								</li>
 							<% end %>
+						<li><a class="pipe" href="#"> | </a></li>
+						<li>
+							<%= link_to('Admin', {:controller => 'access', 
+		:action => 'index'}) %>
+						</li>
 					</ul>
+					<form class="navbar-form navbar-right" role="form">
+						<a href="#loginModal" role="button" class="btn btn-success" data-toggle="modal">Log In</a>
+					</form>
 	     	</div><!-- .navbar collapse -->
 			</div><!-- Container -->
 		</nav><!-- Navbar -->
+
+		<!-- Begin Modal -->
+			<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			      </div>
+
+			      <div class="modal-body">
+			      	<!-- Begin Login Window -->
+					 		<div class="panel panel-default">
+							      <div class="panel-heading"><h2 class="panel-title"><strong>Sign in</strong></h2></div>
+							       <div class="panel-body">
+							         <%= form_tag(:controller => 'access', :action => 'attempt_login') do %>
+							         <div class="form-group">
+							          <%= label_tag(:username) %>
+							          <!-- tesst -->
+							          <%= text_field_tag((:username), nil, :class => 'form-control', :style => 'border-radious:0px', :id => 'username', :placeholder => 'Enter username', :autofocus => true) %>
+							         </div>
+							         <div class="form-group">
+							            <%= label_tag(:password) %>
+							            <%= password_field_tag((:password), nil, :class => 'form-control', :style => 'border-radious:0px', :id => 'password', :placeholder => 'Password') %>
+							          </div>
+							         <input name="commit" type="submit" class="btn btn-sm btn-success" value="Login">
+
+							        <% end %>
+							      </div>
+							</div>
+							<!-- End Login Window -->
+			      </div><!-- Modal-Body -->
+
+			      <div class="modal-footer">
+			        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+			      </div>
+			    </div>
+			  </div>
+			</div><!-- End Modal -->
