@@ -64,8 +64,20 @@ h1, h2, h3 {
   height: 140px;
 }
 
+#loginStatus {
+	li {
+		color: #fff;
+		padding-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    line-height: 20px;
+    display: block;
+	}
+}
 
-/* Navbar Customizations */
+
+/* ==========================
+End Navbar Customizations */
 
 .jumbotron h1 {
 	font-weight: lighter;

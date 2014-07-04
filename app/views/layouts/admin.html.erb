@@ -8,15 +8,22 @@
     <meta name="author" content="">
 
 		<title>AVDB | <%= @page_title || "Admin" %></title>
-		
-		<!-- Google Fonts - Open Sans -->
+	  
+	  <!-- Google Fonts - Open Sans -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>
-
+		
+		<!-- Rails Styles -->
 	  <%= stylesheet_link_tag('application', :media => 'all') %>
+	 	
+	 	<!-- Rails Javascript -->
 	 	<%= javascript_include_tag('application') %>
 
-	</head>
+</head>
 	<body>
+		
+		<%= render(:partial => 'layouts/admin_menu') %>
+
+
 		<div id="header">
 			<table class="banner">
 				<tr>
