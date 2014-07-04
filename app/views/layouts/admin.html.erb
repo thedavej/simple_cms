@@ -24,32 +24,21 @@
 		<%= render(:partial => 'layouts/admin_menu') %>
 
 
-		<div id="header">
-			<table class="banner">
-				<tr>
-					<td class="title">Simple CMS Admin</td>
-					<td class="header-user">
-						Logged in as:  <%= session[:username] -%>
-						<span>|
-							<%= link_to("logout", :controller => 'access',
-								:action => 'logout') %>
-						</span>
-					</td>
-				</tr>
-			</table>
+		<div class="container" role="main">
+			
+				<% if !flash[:notice].blank? %>
+					<div class="notice">
+						<%= flash[:notice] %>
+					</div>
+				<% end %>
+				
+					<%= yield %>
+				
+			
 		</div>
-		<div id="main">
-			<% if !flash[:notice].blank? %>
-				<div class="notice">
-					<%= flash[:notice] %>
-				</div>
-			<% end %>
-			<div id="content">
-				<%= yield %>
-			</div>
-		</div>
-		<div id="footer">
+		
+		<!-- <div id="footer">
 			<p id="copyright">&copy; lynda.com . Kevin Skoglund</p>
-		</div>
+		</div> -->
 	</body>
 </html>

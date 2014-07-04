@@ -4,12 +4,10 @@
 <div class="user edit">
 	<h2>Update Admin User</h2>
 
-	<%= form_for(:admin_user, :url => {:action => 'update', :id => @admin_user.id}) do |f| %>
+	<%= form_for(:admin_user, :class => 'test', :url => {:action => 'update', :id => @admin_user.id}) do |f| %>
 		<%= render(:partial => "form", :locals => {:f => f}) %>
 	<div class="form-buttons">
-		<%= submit_tag("Update Admin User") %>
-	</div>
-
+		<%= submit_tag("Update", :class => 'btn btn-success btn-sm') %>
   <% end %>
 </div>
 

@@ -11,7 +11,7 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><%= link_to("Home", {:action => 'index'}) %></li>
+						<li><%= link_to("Home", {:controller => 'access', :action => 'index'}) %></li>
 						<li><a class="pipe" href="#"> | </a></li>
 					</ul>
 					<ul id="loginStatus" class="nav navbar-nav navbar-right navbar-inverse">

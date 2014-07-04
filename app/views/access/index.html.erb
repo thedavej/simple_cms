@@ -1,15 +1,22 @@
 <% @page_title = "Admin Menu" %>
 
-<div class="menu">
-	<h2>Admin Menu</h2>
-	<hl>
-		<li><%= link_to("Manage Content", :controller => 'subjects') %></li>
-		<li><%= link_to("Manage Admin Users",
-		 :controller => 'admin_users') %></li>
-		<li><%= link_to("Manage All Pages", :controller => 'pages', 
-		:action => 'all_index') %></li>
-		<li><%= link_to("Manage All Sections", :controller => 'sections',
-		 :action => 'all_index') %></li>
-		<li><%= link_to("Logout", :action => 'logout') %></li>
-	</ul>
-</dive>
+
+				   <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>Admin Menu</h1>
+        <p class="lead">Welcome to the back end! Here you can make changes to the AVDB content, manage users, etc.</p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-4">
+          <h4><%= link_to("Manage Admin Users",
+							 :controller => 'admin_users') %></h4>
+					<h4><%= link_to("Manage All Pages", :controller => 'pages', 
+							:action => 'all_index') %></h4>
+					<h4><%= link_to("Manage Content", :controller => 'subjects') %></h4>
+					<h4><%= link_to("Manage All Sections", :controller => 'sections',
+							 :action => 'all_index') %></h4>
+					<h4><%= link_to("Logout", :action => 'logout') %></h4>
+        </div>
+      </div>
