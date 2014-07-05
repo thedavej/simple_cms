@@ -1,8 +1,8 @@
-<%= link_to("<< Back to List", {:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') %>
 <span style="margin-left: 10px;">|</span>
 <span style="margin-left: 10px;">
 	<%= link_to('View Public Section >>', 
 			{:controller => 'public', :action => 'show',
 			:permalink => @section.page.permalink, :anchor => @section.name}, 
-			:class => "back-link") %>
+			:class => "btn btn-default btn-sm") %>
 		</span>

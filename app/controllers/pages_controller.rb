@@ -6,11 +6,12 @@ class PagesController < ApplicationController
 
   def index
     # @pages = Page.sorted
-    @pages = @subject.pages.sorted
+      @pages = @subject.pages.sorted
   end
 
   def all_index
-    @pages = Page.sorted
+    @pages = Page.sub_sorted
+    @pages = @pages.sorted
     @subject = Subject.find(1)
   end
 

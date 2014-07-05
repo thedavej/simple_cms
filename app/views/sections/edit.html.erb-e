@@ -1,16 +1,21 @@
 <% @page_title = "Edit" %>
-<%= render(:partial => "back_link") %>
 
-<div class="sections edit">
-	<h2>Update Section</h2>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-5">
+			<%= render(:partial => "back_link") %>
+			
+			<h2>Update Section</h2>
 
-	<%= form_for(:section, :url => {:action => 'update', 
-		:page_id => @page.id , :id => @section.id}) do |f| %>
-		<%= render(:partial => "form", :locals => {:f => f}) %>
-	<div class="form-buttons">
-		<%= submit_tag("Update Section") %>
+			<%= form_for(:section, :url => {:action => 'update', 
+				:page_id => @page.id , :id => @section.id}) do |f| %>
+				<%= render(:partial => "form", :locals => {:f => f}) %>
+			<div class="form-buttons">
+				<%= link_to("<< Back to List", {:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') %>
+				<%= submit_tag("Update", :class => 'btn btn-success btn-sm') %>
+			</div>
+		  <% end %>
+		  <br />
+		</div>
 	</div>
-
-  <% end %>
 </div>
-

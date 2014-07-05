@@ -1,22 +1,28 @@
 <% @page_title = "Admin Menu" %>
 
-
-				   <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>Admin Menu</h1>
-        <p class="lead">Welcome to the back end! Here you can make changes to the AVDB content, manage users, etc.</p>
-      </div>
+    
+    		<!-- Jumbotron -->
+        <div class="jumbotron">
+          <div class="container">
+            <h1>Admin Menu</h1>
+            <p class="lead">Welcome to the back end! Here you can make changes to the AVDB content, manage users, etc.</p>
+            </div>
+        </div><!-- End Jumbotron -->
+    
 
       <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-lg-4">
-          <h4><%= link_to("Manage Admin Users",
-							 :controller => 'admin_users') %></h4>
-					<h4><%= link_to("Manage All Pages", :controller => 'pages', 
-							:action => 'all_index') %></h4>
-					<h4><%= link_to("Manage Content", :controller => 'subjects') %></h4>
-					<h4><%= link_to("Manage All Sections", :controller => 'sections',
-							 :action => 'all_index') %></h4>
-					<h4><%= link_to("Logout", :action => 'logout') %></h4>
+       <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h4><%= link_to("Manage Admin Users",:controller => 'admin_users',) %></h4>
+  					<h4><%= link_to("Manage Content", :controller => 'subjects') %></h4>
+          </div>
+          <div class="col-md-4">
+            <h4><%= link_to("Manage All Pages", :controller => 'pages', :action => 'all_index') %></h4>
+  					<h4><%= link_to("Manage All Sections", :controller => 'sections',:action => 'all_index') %></h4>
+					</div>   
+            
+          
         </div>
       </div>
+

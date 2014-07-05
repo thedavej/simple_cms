@@ -1,30 +1,35 @@
 <% @page_title = "Details" %>
-<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
 
-<div class="subject show">
-	<h2>Show Subject</h2>
+<div class="container clearfix">
+	<div class="row">
+		 <div class="col-md-8">
+				<%= link_to("<< Back to list", {:action => 'index'}, :class => 'btn btn-default btn-sm') %>
 
-	<table summary="Subject detail view">
-		<tr>
-			<th>Name</th>
-			<td><%= @subject.name %></td>
-		</tr>
-		<tr>
-			<th>Position</th>
-			<td><%= @subject.position %></td>
-		</tr>
-		<tr>
-			<th>Visible?</th>
-			<td><%= @subject.visible ? 'true' : 'false' %></td>
-		</tr>
-		<tr>
-			<th>Created</th>
-			<td><%= @subject.created_at %></td>
-		</tr>
-		<tr>
-			<th>Updated</th>
-			<td><%= @subject.updated_at %></td>
-		</tr>
-	</table>
+			
+				<h2>Show Subject</h2>
 
-</div>
+				<table class ="table table-bordered table-condensed" summary="Subject detail view">
+					<tr>
+						<th>Name</th>
+						<td><%= @subject.name %></td>
+					</tr>
+					<tr>
+						<th>Position</th>
+						<td><%= @subject.position %></td>
+					</tr>
+					<tr>
+						<th>Visible?</th>
+						<td><%= @subject.visible ? 'true' : 'false' %></td>
+					</tr>
+					<tr>
+						<th>Created</th>
+						<td><%= @subject.created_at %></td>
+					</tr>
+					<tr>
+						<th>Updated</th>
+						<td><%= @subject.updated_at %></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+</div><!-- End Container -->

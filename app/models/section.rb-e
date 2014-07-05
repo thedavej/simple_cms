@@ -20,7 +20,7 @@ class Section < ActiveRecord::Base
 	scope :invisible, lambda { where(:visible => false) }
 	scope :sorted, lambda { order("sections.position ASC") }
 	scope :newest_first, lambda { order("sections.created_at DESC") }
-	scope :sorted_by_page, lambda { order("sections.page_id ASC") }
+	scope :sorted_by_subject, lambda { order("sections.page_id ASC") }
 
 
   private

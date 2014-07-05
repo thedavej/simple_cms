@@ -1,15 +1,20 @@
 <% @page_title = "New" %>
-<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
-<div class="subject new">
-	<h2>Create Subject</h2>
 
-	<%= form_for(:subject, :url => {:action => 'create'}) do |f| %>
-		<%= render(:partial => "form", :locals => {:f => f}) %>	
-	<div class="form-buttons">
-		<%= submit_tag("Create Subject") %>
-	</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-5">
+			<h2>Create Subject</h2>
 
-  <% end %>
+				<%= form_for(:subject, :url => {:action => 'create'}) do |f| %>
+					<%= render(:partial => "form", :locals => {:f => f}) %>	
+				<div class="form-buttons">
+					<%= link_to("Cancel", {:action => 'index'}, :class => 'btn btn-default btn-sx') %>
+					<%= submit_tag("Create", :class => 'btn btn-success btn-xs') %>
+				</div>
+			  <% end %>
+
+			</div>
+		</div>
 </div>
 

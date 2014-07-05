@@ -1,35 +1,44 @@
 <% @page_title = "Subjects List" %>
 
-<%= link_to("<< Back to Main Menu", {:controller => 'access',
- :action => 'index'}, :class => 'back-link') %>
+	<div class="container clearfix">
+		<div class="row">
+		  <div class="col-md-12">
+	<%= link_to("<< Back to Main Menu", {:controller => 'access', :action => 'index'}, :class => 'btn btn-default btn-sm') %>
 
-<div class="subject index">
-	<h2>Subjects</h2>
+	
+		<h2>Subjects</h2>
 
-	<%= link_to("Add New Subject", {:action => 'new'}, :class => 'action new') %>
+		<%= link_to("Add New Subject", {:action => 'new'}, :class => 'btn btn-success btn-sm pull-right') %>
 
-	<div><%= pluralize(@subjects.size, 'subject') %> found</div>
-	<table class ="listing" summary="Subject list">
-		<tr class="header">
-			<th>&nbsp;</th>
-			<th>Subject</th>
-			<th>Pages</th>
-			<th>Visible</th>
-			<th>Action</th>
-		</tr>
-		<% @subjects.each do |subject| %>
-		<tr class="<%= cycle('odd', 'even') %>">
-			<td><%= subject.position %></td>
-			<td><%= subject.name %></td>
-			<td class="center"><%= subject.pages.size %></td>
-			<td class="center"><%= status_tag(subject.visible) %></td>
-			<td class="actions">
-				<%= link_to("View Pages", {:controller => 'pages', :subject_id => subject.id}, :class => 'action show') %>
-				<%= link_to("Show", {:action => 'show', :id => subject.id}, :class => 'action show') %>
-				<%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'action edit') %>
-				<%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'action delete') %>
-			</td>
-		</tr>
-		<% end %>
-	</table>
-</div>
+		<div><%= pluralize(@subjects.size, 'subject') %> found</div>
+		  	<div class="table-responsive">
+					<table class ="table table-bordered table-striped table-condensed" summary="Subject list">
+						<thead>
+							<th>&nbsp;</th>
+							<th>Subject</th>
+							<th>Pages</th>
+							<th>Visible</th>
+							<th></th>
+						</thead>
+						<tbody>
+						<% @subjects.each do |subject| %>
+						<tr>
+							<td><%= subject.position %></td>
+							<td><%= subject.name %></td>
+							<td class="center"><%= subject.pages.size %></td>
+							<td class="center"><%= status_tag(subject.visible) %></td>
+							<td class="actions text-center col-md-4">
+								<%= link_to("View Pages", {:controller => 'pages', :subject_id => subject.id}, :class => 'btn btn-primary btn-xs') %>
+								<%= link_to("Show", {:action => 'show', :id => subject.id}, :class => 'btn btn-default btn-xs') %>
+								<%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'btn btn-warning btn-xs') %>
+								<%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'btn btn-danger btn-xs') %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	
+</div><!-- End Container -->

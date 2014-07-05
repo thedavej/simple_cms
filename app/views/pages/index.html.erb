@@ -1,43 +1,55 @@
 <% @page_title = "Pages List" %>
 
-<%= link_to("<< Back to Subjects", {:controller => 'subjects', 
-	:action => 'index'}, :class => 'back-link') %>
+<div class="container clearfix">
+		<div class="row">
+			
+		  <div class="col-md-12">
+				<%= link_to("<< Back to Subjects", {:controller => 'subjects', 
+					:action => 'index'}, :class => 'btn btn-default btn-sm') %>
 
-<div class="page index">
-	<h2>Pages</h2>
-	<div><%= pluralize(@pages.size, 'page') %> found</div>
-	<%= link_to("Add New Page", {:action => 'new', 
-		:subject_id => @subject.id}, :class => 'action new') %>
 
-	<table class ="listing" summary="Page list">
-		<tr class="header">
-			<th>&nbsp;</th>
-			<th>Parent Subject</th>
-			<th>Page Name</th>
-			<th>Child Sections</th>
-			<th>Permalink</th>
-			<th>Visible</th>
-			<th>Action</th>
-		</tr>
-		<% @pages.each do |page| %>
-		<tr class="<%= cycle('odd', 'even') %>">
-			<td><%= page.position %></td>
-			<td><%= page.subject.name if page.subject %></td>
-			<td><%= page.name %></td>
-			<td class="center"><%= page.sections.size %></td>
-			<td class="center"><%= page.permalink %></td>
-			<td class="center"><%= status_tag(page.visible) %></td>
-			<td class="actions">
-				<%= link_to("View Sections", {:controller => 'sections', 
-					:page_id => page.id}, :class => 'action show') %>
-				<%= link_to("Show", {:action => 'show', :id => page.id, 
-					:subject_id => @subject.id}, :class => 'action show') %>
-				<%= link_to("Edit", {:action => 'edit', :id => page.id, 
-					:subject_id => @subject.id}, :class => 'action edit') %>
-				<%= link_to("Delete", {:action => 'delete', :id => page.id, 
-					:subject_id => @subject.id}, :class => 'action Delete') %>
-			</td>
-		</tr>
-		<% end %>
-	</table>
-</div>
+		<h2>Pages</h2>
+
+		<%= link_to("Add New Page", {:action => 'new', :subject_id => @subject.id}, :class => 'btn btn-success btn-sm pull-right') %>
+			<% else %>
+		
+		<div><%= pluralize(@pages.size, 'page') %> found</div>
+
+		  	<div class="table-responsive">
+					<table class ="table table-bordered table-striped table-condensed" summary="Page list">
+						<thead>
+							<th>&nbsp;</th>
+							<th>Parent Subject</th>
+							<th>Page Name</th>
+							<th>Child Sections</th>
+							<th>Permalink</th>
+							<th>Visible</th>
+							<th></th>
+						</thead>
+						<tbody>
+						<% @pages.each do |page| %>
+						<tr>
+							<td><%= page.position %></td>
+							<td><%= page.subject.name if page.subject %></td>
+							<td><%= page.name %></td>
+							<td class="center"><%= page.sections.size %></td>
+							<td class="center"><%= page.permalink %></td>
+							<td class="center"><%= status_tag(page.visible) %></td>
+							<td class="actions text-center col-md-4">
+								<%= link_to("View Sections", {:controller => 'sections', 
+									:page_id => page.id}, :class => 'btn btn-primary btn-xs') %>
+								<%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-info btn-xs') %>
+								<%= link_to("Edit", {:action => 'edit', :id => page.id, 
+									:subject_id => @subject.id}, :class => 'btn btn-warning btn-xs') %>
+								<%= link_to("Delete", {:action => 'delete', :id => page.id, 
+									:subject_id => @subject.id}, :class => 'btn btn-danger btn-xs') %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div><!-- End Container -->

@@ -10,7 +10,8 @@ class SectionsController < ApplicationController
   end
 
   def all_index
-    @sections = Section.sorted_by_page
+    @sections = Section.newest_first
+   
     @page = Page.find(1)
   end
 

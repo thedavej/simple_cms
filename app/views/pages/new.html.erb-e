@@ -1,17 +1,21 @@
 <% @page_title = "New" %>
-<%= link_to("<< Back to List", {:action => 'index', 
-	:subject_id => @subject.id}, :class => 'back-link') %>
 
-<div class="page new">
-	<h2>Create Page</h2>
 
-	<%= form_for(:page, :url => {:action => 'create', 
-			:subject_id => @subject.id}) do |f| %>
-		<%= render(:partial => "form", :locals => {:f => f}) %>	  
-	<div class="form-buttons">
-		<%= submit_tag("Create Page") %>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-5">
+			<h2>Create Page</h2>
+
+			<%= form_for(:page, :url => {:action => 'create', 
+					:subject_id => @subject.id}) do |f| %>
+				<%= render(:partial => "form", :locals => {:f => f}) %>	  
+			<div class="form-buttons">
+				<%= link_to("Cancel", {:action => 'index', :subject_id => @subject.id}, :class => 'btn btn-default btn-sm') %>
+				<%= submit_tag("Create", :class => 'btn btn-success btn-sm') %>
+			</div>
+
+		  <% end %>
+		</div>
 	</div>
-
-  <% end %>
 </div>
 
