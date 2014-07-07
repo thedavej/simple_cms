@@ -20,18 +20,13 @@
 
 </head>
 	<body>
-		
+		<!-- Admin Navbar -->
 		<%= render(:partial => 'layouts/admin_menu') %>
 
-
+		<!-- Flash Messages -->
+		<%= render(:partial => 'layouts/flash_messages') %>
 		<div>
-			
-				<% if !flash[:notice].blank? %>
-					<div class="notice">
-						<%= flash[:notice] %>
-					</div>
-				<% end %>
-				
+
 					<%= yield %>
 				
 			

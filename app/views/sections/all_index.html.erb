@@ -8,13 +8,7 @@
 				<%= link_to("<< Back to Pages", {:controller => 'pages',
 					:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') %>
 
-				<span style="margin-left: 10px;">|</span>
-				<span style="margin-left: 10px;">
-					<%= link_to('View Public Page >>', 
-							{:controller => 'public', :action => 'show',
-							:permalink => @page.permalink}, 
-							:class => 'btn btn-default btn-sm') %>
-						</span>
+				
 
 
 					<h2>

@@ -11,11 +11,17 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><%= link_to("Home", 
-	{:action => 'index'}) %></li>
+						<li><%= link_to("Home", {:action => 'index'}) %></li>
+							
+							<% @need_active = false %>
 							<% @subjects.each do |subject| %>
-								<li class="dropdown">
-									<%= link_to(subject.name, {:action => 'show_pages', :subject_id => subject.id}, :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}) %>
+								
+										<li class="dropdown">
+									
+
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= subject.name %><span class="carat"></span></a>
+									
+										
 									<ul class="dropdown-menu" role="menu">
 										<% subject.pages.visible.sorted.each do |page| %>
 											<li>
@@ -27,17 +33,12 @@
 									</ul>
 								</li>
 							<% end %>
-						<li><a class="pipe" href="#"> | </a></li>
-						<li>
-							<%= link_to('Admin', {:controller => 'access', 
-		:action => 'index'}) %>
-						</li>
 					</ul>
 					<ul id="loginStatus" class="nav navbar-nav navbar-right navbar-inverse">
 
 						<% if session[:username] %>
 		      		<li class="active">
-		      			Logged in as:  <%= session[:username] -%>
+		      			Logged in as:  <strong><%= @human_name %></strong>
 							</li>
 							<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'btn' + ' navbar-btn' + ' btn-danger' + ' btn-sm') %>
 							<% else %>
@@ -47,4 +48,5 @@
 	     	</div><!-- .navbar collapse -->
 			</div><!-- Container -->
 		</nav><!-- Navbar -->
+
 		<%= render(:partial => 'layouts/loginModal') %>

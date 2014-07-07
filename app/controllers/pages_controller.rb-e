@@ -20,8 +20,7 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = Page.new({:subject_id => @subject.id,
-                    :name => 'Default'})
+    @page = Page.new({:subject_id => @subject.id})
     @subjects = Subject.order('position ASC')
     @page_count = @subject.pages.count + 1
   end
@@ -30,7 +29,7 @@ class PagesController < ApplicationController
     @page = Page.new(pages_params)
     if @page.save
       @page.editors << AdminUser.find(session[:user_id])
-      flash[:notice] = "Page created successfully"
+      flash[:success] = "Page created successfully"
       redirect_to(:action => 'index', :subject_id => @subject.id)
     else
       @subjects = Subject.order('position ASC')
@@ -49,7 +48,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     if @page.update_attributes(pages_params)
       @page.editors << AdminUser.find(session[:user_id])
-      flash[:notice] = "Page updated successfully"
+      flash[:success] = "Page updated successfully"
       redirect_to(:action => 'show', :id => @page.id,
                   :subject_id => @subject.id)
     else
@@ -65,7 +64,7 @@ class PagesController < ApplicationController
 
   def destroy
     page = Page.find(params[:id]).destroy
-    flash[:notice] = "Page 'page.name' was destroyed successfully"
+    flash[:danger] = "Page 'page.name' was destroyed successfully"
     redirect_to(:action => 'index', :subject_id => @subject.id)
   end
 

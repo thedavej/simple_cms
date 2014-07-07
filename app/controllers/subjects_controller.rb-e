@@ -12,7 +12,7 @@ class SubjectsController < ApplicationController
   end
 
   def new
-    @subject = Subject.new({:name => 'Default'})
+    @subject = Subject.new({})
     @subject_count = Subject.count + 1
   end
 
@@ -22,7 +22,7 @@ class SubjectsController < ApplicationController
     # Save the object
     if @subject.save
     #If success, redirect to the index action
-      flash[:notice] = "Subject saved successfully"
+      flash[:success] = "Subject saved successfully"
       redirect_to(:action => 'index')
     # If fails, redisplay the form to user can fix mistakes
     else
@@ -42,7 +42,7 @@ class SubjectsController < ApplicationController
     # Update the object
     if @subject.update_attributes(subject_params)
     #If success, redirect to the show action
-      flash[:notice] = "Subject updated successfully"
+      flash[:success] = "Subject updated successfully"
       redirect_to(:action => 'show', :id => @subject.id)
     # If fails, redisplay the form to user can fix mistakes
     else
@@ -57,7 +57,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     subject = Subject.find(params[:id]).destroy
-    flash[:notice] = "Subject '#{subject.name}' destroyed successfully"
+    flash[:danger] = "Subject '#{subject.name}' destroyed successfully"
     redirect_to(:action => 'index')
   end
 

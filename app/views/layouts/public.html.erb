@@ -17,16 +17,20 @@
 	 	
 	 	<!-- Rails Javascript -->
 	 	<%= javascript_include_tag('application') %>
-
+		
+		
 </head>
 	<body role="document">
 		<a id="top"></a>
 		<!-- Navbar -->
 		<%= render(:partial => 'layouts/bs_menu') %>
 		
+		<!-- Flash Messages -->
+		<%= render(:partial => 'layouts/flash_messages') %>
 		<div class="container theme-showcase" role="main">
-			
-		
+
+				
+
 				<%= yield %>
 			
 
@@ -35,6 +39,7 @@
 		<div id="footer">
 			<p id="copyright">&copy; Dave Johnson</p>
 		</div>
+	
 	
 	</body>
 </html>

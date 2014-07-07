@@ -9,6 +9,12 @@ class PublicController < ApplicationController
   def index
   	# introductory text
     @subjects = Subject.sorted
+    @current_user = AdminUser.where(:username => session[:username]).first
+    
+    if @current_user
+      @human_name = @current_user.first_name + ' ' + @current_user.last_name
+    end
+
   end
 
   def show
@@ -19,6 +25,11 @@ class PublicController < ApplicationController
   	else
   		# display the page contents using show.html.erb
   	end
+
+   # recognized = Rails.application.routes.recognize_path(link)
+   
+
+
   end
 
   def show_pages

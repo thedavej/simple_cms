@@ -15,9 +15,9 @@ h1, h2, h3 {
     color:  #aaa;
 }
 
-.navbar-nav > li:hover:not(#menuLogin) > .dropdown-menu {
+/*.navbar-nav > li:hover:not(#menuLogin) > .dropdown-menu {
   display: block;
-}
+}*/
 
 .dropdown { 
 

@@ -30,7 +30,7 @@ class AccessController < ApplicationController
   		flash[:notice] = "You are now logged in."
   		redirect_to(:action => 'index')
   	else
-  		flash[:notice] = "Invalid username/password combination."
+  		flash[:danger] = "Invalid username/password combination."
   		redirect_to(:action => 'login')
   	end
   end
@@ -40,8 +40,8 @@ class AccessController < ApplicationController
     session[:user_id] = nil
     session[:username] = nil
 
-  	flash[:notice] = "You are now logged out."
-  	redirect_to(:action => 'login')
+  	flash[:success] = "You are now logged out."
+  	redirect_to(:controller => 'public', :action => 'index')
   end
 
   

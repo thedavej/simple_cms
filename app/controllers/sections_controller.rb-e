@@ -20,8 +20,7 @@ class SectionsController < ApplicationController
   end
 
   def new
-    @section = Section.new({:page_id => @page.id, :name => 'Default',
-                          :content_type => 'HTML'})
+    @section = Section.new({:page_id => @page.id, :content_type => 'HTML'})
     @pages = @page.subject.pages.sorted
     @section_count = @page.sections.count + 1
   end
@@ -34,7 +33,7 @@ class SectionsController < ApplicationController
       SectionEdit.create(:admin_user_id => @editor.id,
        :section_id => @section.id, :summary => 
        @editor.name + " created '#{@section.name}' with id: '#{@section.id}' at " + @time)
-      flash[:notice] = "Section created successfully"
+      flash[:success] = "Section created successfully"
       redirect_to(:action => 'index', :page_id => @page.id)
     else
       @pages = Page.order('position ASC')
@@ -57,7 +56,7 @@ class SectionsController < ApplicationController
       SectionEdit.create(:admin_user_id => @editor.id,
        :section_id => @section.id, :summary => 
        @editor.name + " updated '#{@section.name}' with id: '#{@section.id}' at " + @time)
-      flash[:notice] = "Section updated successfully"
+      flash[:success] = "Section updated successfully"
       redirect_to(:action => 'show', :id => @section.id, :page_id => @page.id)
     else
       @pages = Page.order('position ASC')
@@ -77,7 +76,7 @@ class SectionsController < ApplicationController
       SectionEdit.create(:admin_user_id => @editor.id,
        :section_id => @section.id, :summary => 
        @editor.name + " deleted '#{@section.name}' with id: '#{@section.id}' at " + @time)
-    flash[:notice] = "Section '#{@section.name}' deleted successfully."
+    flash[:danger] = "Section '#{@section.name}' deleted successfully."
     redirect_to(:action => 'index', :page_id => @page.id)
   end
 

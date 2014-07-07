@@ -1,7 +1,7 @@
-$(document).ready(function () {
-        $('ul.nav > li.dropdown > ul.dropdown-menu > li').click(function (e) {
-            e.preventDefault();
-            $('ul.dropdown-menu > li').removeClass('active');
-            $(this).addClass('active');                
-        });            
-    });
+// $('.menu li a').click(function(e) {
+//   var $this = $(this);
+//   if (!$this.hasClass('active')) {
+//     $this.addClass('active');
+//   }
+//   e.preventDefault();
+// });
