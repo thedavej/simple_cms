@@ -22,7 +22,7 @@
 
 						<% if session[:username] %>
 		      		<li class="active">
-		      			Logged in as:  <%= session[:username] -%>
+		      			Logged in as:  <strong><%= human_name %></strong>
 							</li>
 							<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'btn' + ' navbar-btn' + ' btn-danger' + ' btn-sm') %>
 							<% else %>

@@ -11,20 +11,14 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><%= link_to("Home", {:action => 'index'}) %></li>
+						<li class="<%= check_home %>"><%= link_to("Home", {:action => 'index'}) %></li>
 							
-							<% @need_active = false %>
 							<% @subjects.each do |subject| %>
-								
-										<li class="dropdown">
-									
-
+								<li class="dropdown<%= check_subject(subject) %>">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= subject.name %><span class="carat"></span></a>
-									
-										
 									<ul class="dropdown-menu" role="menu">
 										<% subject.pages.visible.sorted.each do |page| %>
-											<li>
+											<li class="<%= check_page(page) %>">
 												<%= link_to(page.name, 
 												{:action =>'show', :permalink =>
 												page.permalink}) %>
@@ -38,7 +32,7 @@
 
 						<% if session[:username] %>
 		      		<li class="active">
-		      			Logged in as:  <strong><%= @human_name %></strong>
+		      			Logged in as:  <strong><%= human_name %></strong>
 							</li>
 							<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'btn' + ' navbar-btn' + ' btn-danger' + ' btn-sm') %>
 							<% else %>

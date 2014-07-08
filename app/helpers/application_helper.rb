@@ -24,22 +24,36 @@ module ApplicationHelper
     end
 	end	
 
-	
-
-	
-
-
-	def nav_link(text, link)
-    recognized = Rails.application.routes.recognize_path(link)
-    if recognized[:controller] == params[:controller] && recognized[:action] == params[:action]
-        content_tag(:li, :class => "active") do
-            link_to( text, link)
-    		end
-    else
-        content_tag(:li) do
-            link_to( text, link)
-        end
+	def human_name
+		@current_user = AdminUser.where(:username => session[:username]).first
+    
+    if @current_user
+      @human_name = @current_user.first_name + ' ' + @current_user.last_name
     end
 	end
+
 	
+	def check_home
+		current_url = request.env['PATH_INFO']
+		path = Rails.application.routes.recognize_path(current_url)
+		if path[:action] == 'index'
+			return 'active'
+		end
+	end
+
+	def check_subject(subject)
+		# current_url = request.env['PATH_INFO']
+		# path = Rails.application.routes.recognize_path(current_url)
+		if params[:permalink].try(:starts_with?, subject.name)
+	  		return " active"
+  	end
+	end
+
+	def check_page(page)
+		if params[:permalink] == page.permalink
+			return "active"
+		end
+	end
+	
+
 end

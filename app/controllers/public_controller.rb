@@ -8,13 +8,7 @@ class PublicController < ApplicationController
 
   def index
   	# introductory text
-    @subjects = Subject.sorted
-    @current_user = AdminUser.where(:username => session[:username]).first
-    
-    if @current_user
-      @human_name = @current_user.first_name + ' ' + @current_user.last_name
-    end
-
+    @subjects = Subject.sorted    
   end
 
   def show
