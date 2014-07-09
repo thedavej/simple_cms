@@ -6,7 +6,14 @@ class SectionsController < ApplicationController
 
   def index
     # @sections = Section.sorted
-    @sections = @page.sections.sorted
+    if @page
+      @all_sect = false
+      @sections = @page.sections.sorted
+    else
+      @all_sect = true
+      @sections = Section.newest_first
+      @page = Page.first
+    end
   end
 
   def all_index
@@ -17,12 +24,14 @@ class SectionsController < ApplicationController
 
   def show
     @section = Section.find(params[:id])
+    render action: "show_modal", layout: "crud_modal"
   end
 
   def new
     @section = Section.new({:page_id => @page.id, :content_type => 'HTML'})
     @pages = @page.subject.pages.sorted
     @section_count = @page.sections.count + 1
+    render action: "new_modal", layout: "crud_modal"
   end
 
   def create
@@ -46,6 +55,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     @pages = Page.order('position ASC')
     @section_count = @page.sections.count
+    render action: "edit_modal", layout: "crud_modal"
   end
 
   def update
@@ -57,7 +67,7 @@ class SectionsController < ApplicationController
        :section_id => @section.id, :summary => 
        @editor.name + " updated '#{@section.name}' with id: '#{@section.id}' at " + @time)
       flash[:success] = "Section updated successfully"
-      redirect_to(:action => 'show', :id => @section.id, :page_id => @page.id)
+      redirect_to(:action => 'index', :id => @section.id, :page_id => @page.id)
     else
       @pages = Page.order('position ASC')
       @section_count = Section.count
@@ -67,6 +77,7 @@ class SectionsController < ApplicationController
 
   def delete
     @section = Section.find(params[:id])
+    render action: "delete_modal", layout: "crud_modal"
   end
 
   def destroy

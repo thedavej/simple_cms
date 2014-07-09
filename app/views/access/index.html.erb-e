@@ -4,19 +4,19 @@
     		<!-- Jumbotron -->
         <div class="jumbotron">
           <div class="container">
-            <h1>Admin Menu</h1>
+            <h1>AVDB Admin</h1>
             <p class="lead">Welcome to the back end! Here you can make changes to the AVDB content, manage users, etc.</p>
             
-                          <div class="btn-group">
+              <div class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Admin Menu
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><%= link_to("Manage Admin Users", {:controller => 'admin_users'}) %></li>
                   <li><%= link_to("Manage Content", {:controller => 'subjects'}) %></li>
                   <li role="presentation" class="divider"></li>
-                  <li><%= link_to("Manage All Pages", {:controller => 'pages', :action => 'all_index'}) %></li>
-                  <li><%= link_to("Manage All Sections", {:controller => 'sections',:action => 'all_index'}) %></li>
+                  <li><%= link_to("Manage Admin Users", {:controller => 'admin_users'}) %></li>
+                  <li><%= link_to("Manage All Pages", {:controller => 'pages', :action => 'index'}) %></li>
+                  <li><%= link_to("Manage All Sections", {:controller => 'sections',:action => 'index'}) %></li>
                 </ul>
               </div><!-- End Btn Group -->
 

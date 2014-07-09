@@ -1,0 +1,13 @@
+<%= form_for(:section, :url => {:action => 'destroy', 
+				:page_id => @page.id , :id => @section.id}) do |f| %>
+
+			<div class="modal-body">
+        <div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> &nbsp;Are you sure you want to delete <%= @section.name %>?</div>
+      	</div>
+			 <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span> No</button>
+      	<%= button_tag(type: "submit", class: "btn btn-danger", name: "commit") do %>
+      		<span class="glyphicon glyphicon-ok-sign"></span> Yes
+      	<% end %>
+      </div>
+			<% end %>

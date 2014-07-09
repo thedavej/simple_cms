@@ -5,24 +5,33 @@ class PagesController < ApplicationController
   before_action :find_subject
 
   def index
-    # @pages = Page.sorted
-      @pages = @subject.pages.sorted
+    if @subject
+      @all_pages = false
+      @pages = (@subject.pages.sorted)
+    else
+      @all_pages = true
+      @pages = Page.all.sub_sorted
+      @pages = @pages.sorted
+      @subject = Subject.first  
+    end
   end
 
   def all_index
-    @pages = Page.sub_sorted
+    @pages = Page.all.sub_sorted
     @pages = @pages.sorted
-    @subject = Subject.find(1)
+    @subject = Subject.first
   end
 
   def show
     @page = Page.find(params[:id])
+    render action: "show_modal", layout: "crud_modal"
   end
 
   def new
     @page = Page.new({:subject_id => @subject.id})
     @subjects = Subject.order('position ASC')
     @page_count = @subject.pages.count + 1
+    render action: "new_modal", layout: "crud_modal"
   end
 
   def create
@@ -42,6 +51,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     @subjects = Subject.order('position ASC')
     @page_count = @subject.pages.count
+    render action: "edit_modal", layout: "crud_modal"
   end
 
   def update
@@ -49,8 +59,7 @@ class PagesController < ApplicationController
     if @page.update_attributes(pages_params)
       @page.editors << AdminUser.find(session[:user_id])
       flash[:success] = "Page updated successfully"
-      redirect_to(:action => 'show', :id => @page.id,
-                  :subject_id => @subject.id)
+      redirect_to(:action => 'index', :id => @page.id, :subject_id => @subject.id)
     else
       @subjects = Subject.order('position ASC')
       @page_count = Page.count
@@ -60,6 +69,7 @@ class PagesController < ApplicationController
 
   def delete
     @page = Page.find(params[:id])
+    render action: "delete_modal", layout: "crud_modal"
   end
 
   def destroy

@@ -4,6 +4,7 @@ module ApplicationHelper
 		render(:partial => 'application/error_messages',
 			:locals => {:object => object})
 	end
+	
 	def status_tag(boolean, options={})
 	  options[:true_text] ||= 'active'
 	  options[:false_text] ||='inactive'

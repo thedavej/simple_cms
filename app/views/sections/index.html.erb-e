@@ -3,59 +3,83 @@
 <div class="container clearfix">
 		<div class="row">
 		  <div class="col-md-12">
-
-				<%= link_to("<< Back to Pages", {:controller => 'pages',
-					:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') %>
-
-				<span style="margin-left: 10px;">|</span>
-				<span style="margin-left: 10px;">
-					<%= link_to('View Public Page >>', 
-							{:controller => 'public', :action => 'show',
-							:permalink => @page.permalink}, 
-							:class => 'btn btn-default btn-sm') %>
-						</span>
-
-
-					<h2>
-						<%= @page.name %>
-						| Sections
-					</h2>
-					
-					
-					<%= link_to("Add New Section", {:action => 'new', :page_id => @page.id }, :class => 'btn btn-success btn-sm pull-right') %>
-					
-					<div><%= pluralize(@sections.size, 'section') %> found</div>
-
-
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-condensed" summary="Section list">
-						<thead>
-							<th>&nbsp;</th>
-							<th>Parent Page</th>
-							<th>Section</th>
-							<th>Visible</th>
-							<th></th>
-						</thead>
-						<tbody>
-						<% @sections.each do |section| %>
-							<td><%= section.position %></td>
-							<td><%= section.page.name if section.page %></td>
-							<td><%= section.name %></td>
-							<td><%= status_tag(section.visible) %></td>
-							<td class="actions text-center col-md-3">
-										<%= link_to("Show", {:action => 'show', :id => section.id,
-											:page_id => @page.id}, :class => 'btn btn-primary btn-xs') %>
-										<%= link_to("Edit", {:action => 'edit', :id => section.id,
-											:page_id => @page.id}, :class => 'btn btn-warning btn-xs') %>
-										<%= link_to("Delete", {:action => 'delete', :id => section.id,
-											:page_id => @page.id}, :class => 'btn btn-danger btn-xs') %>
-							</td>
-						</tr>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<% if @all_sect %>
+							<h2>All Sections</h2>
+							<% else %>
+								<h2><%= @page.name %> | Sections</h2>
 						<% end %>
-					</tbody>
-					</table>
-				</div>
-		</div>
-
+					</div><!-- End Panel-Heading -->
+					<div class="panel-body">
+						<%= link_to("<< Back to Pages", {:controller => 'pages',:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm pull-left') %>
+							<span style="margin-left: 10px;">|</span>
+							<span style="margin-left: 10px;">
+								<%= link_to('View Public Page >>', {:controller => 'public', :action => 'show',:permalink => @page.permalink}, :class => 'btn btn-default btn-sm') %>
+							</span>
+						<%= link_to({:action => 'new', :page_id => @page.id }, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
+								<span class="glyphicon glyphicon-file"></span> New Section
+						<% end %>
+					</div><!-- End Panel-Body -->
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-condensed" summary="Section list">
+							<thead>
+								<th>&nbsp;</th>
+								<th>Parent Page</th>
+								<th>Section</th>
+								<th>Visible</th>
+								<th></th>
+								<th></th>
+								<th class="col-md-2"></th>
+							</thead>
+							<tbody>
+							<% @sections.each do |section| %>
+								<td><%= section.position %></td>
+								<td><%= section.page.name if section.page %></td>
+								<td><%= section.name %></td>
+								<td><%= status_tag(section.visible) %></td>
+								<td></td>
+								<td></td>
+								<td style="text-align: center;">
+									<div class="btn-group">
+										<button type="button" class="btn btn-primary btn-xs">Actions</button>
+										<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+								      <span class="caret"></span>
+								    </button>
+								    <ul class="dropdown-menu" role="menu">
+								    	<li><%= link_to("Show", {:action => 'show', :id => section.id,
+												:page_id => @page.id}, :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+								      </li>
+											<li><%= link_to("Edit", {:action => 'edit', :id => section.id,
+												:page_id => @page.id}, :class => '', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+								      </li>
+											<li><%= link_to("Delete", {:action => 'delete', :id => section.id,
+												:page_id => @page.id}, :class => '', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
+								      </li>
+								    </ul>
+								  </div>
+								</td>
+							</tr>
+							<% end %>
+							</tbody>
+						</table>
+					</div><!-- End Table-Responsive -->
+					<div class="panel-footer">
+						<p><%= pluralize(@sections.size, 'section') %> found</p>
+					  <ul class="pagination pull-right">
+				      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+				      <li class="active"><a href="#">1</a></li>
+				      <li><a href="#">2</a></li>
+				      <li><a href="#">3</a></li>
+				      <li><a href="#">4</a></li>
+				      <li><a href="#">5</a></li>
+				      <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+				    </ul><!-- End Pagination -->
+					</div><!-- End Panel-Footer -->
+				</div><!-- End Panel -->
+				
+			</div><!-- End Col -->
 	</div><!-- End Row -->
 </div><!-- End Container -->
+
+<%= render(:partial => 'layouts/modal_containers') %>

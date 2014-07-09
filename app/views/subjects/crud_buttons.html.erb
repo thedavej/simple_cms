@@ -1,0 +1,6 @@
+<div class="btn-group">
+										<%= link_to("", {:action => 'show', :id => subject.id},:class => 'btn btn-primary btn-xs glyphicon glyphicon-th-list', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+											
+										<%= link_to("", {:action => 'edit', :id => subject.id}, :class => 'btn btn-warning btn-xs glyphicon glyphicon-pencil', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+										<%= link_to("", {:action => 'delete', :id => subject.id}, :class => 'btn btn-danger btn-xs glyphicon glyphicon-trash', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
+										</div>

@@ -1,0 +1,35 @@
+<div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    	
+	    </div><!-- /.modal-content --> 
+	  </div> <!-- /.modal-dialog -->      
+	</div><!-- End New Modal -->
+
+
+	<div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    	
+	    </div><!-- /.modal-content --> 
+	  </div> <!-- /.modal-dialog -->      
+	</div><!-- End Show Modal -->
+
+
+	<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    
+	    </div><!-- /.modal-content --> 
+	  </div> <!-- /.modal-dialog -->      
+	</div><!-- End Edit Modal -->
+
+	    
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	     
+	    </div><!-- /.modal-content --> 
+	  </div><!-- /.modal-dialog --> 
+	</div><!-- End Delete Modal -->
+

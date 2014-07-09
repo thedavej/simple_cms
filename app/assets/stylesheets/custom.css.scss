@@ -74,6 +74,10 @@ h1, h2, h3 {
     display: block;
 	}
 }
+.navbar-inverse .navbar-text {
+    color: #fff;
+    font-weight: lighter;
+}
 
 
 /* ==========================
@@ -106,10 +110,12 @@ aside h3 {
 	border-bottom: 1px solid #222;
 }
 
+
+
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
   /*background-color: #f9f9f9;*/
-  background-color: #bababa;
+  background-color: #ccc;
 }
 
 #footer {

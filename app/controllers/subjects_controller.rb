@@ -9,11 +9,13 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find(params[:id])
+    render action: "show_modal", layout: "crud_modal"
   end
 
   def new
     @subject = Subject.new({})
     @subject_count = Subject.count + 1
+    render action: "new_modal", layout: "crud_modal"
   end
 
   def create
@@ -34,6 +36,7 @@ class SubjectsController < ApplicationController
   def edit
     @subject = Subject.find(params[:id])
     @subject_count = Subject.count
+    render action: "edit_modal", layout: "crud_modal"
   end
 
   def update
@@ -43,7 +46,7 @@ class SubjectsController < ApplicationController
     if @subject.update_attributes(subject_params)
     #If success, redirect to the show action
       flash[:success] = "Subject updated successfully"
-      redirect_to(:action => 'show', :id => @subject.id)
+      redirect_to(:action => 'index')
     # If fails, redisplay the form to user can fix mistakes
     else
       @subject_count = Subject.count
@@ -53,6 +56,7 @@ class SubjectsController < ApplicationController
 
   def delete
     @subject = Subject.find(params[:id])
+    render action: "delete_modal", layout: "crud_modal"
   end
 
   def destroy

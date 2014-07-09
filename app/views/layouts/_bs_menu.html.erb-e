@@ -7,10 +7,10 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-					<a class="navbar-brand" href="#">AVDB</a>
+					<span class="navbar-brand" href="#">AVDB</span>
 				</div>
 				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
+				 	<ul class="nav navbar-nav">
 						<li class="<%= check_home %>"><%= link_to("Home", {:action => 'index'}) %></li>
 							
 							<% @subjects.each do |subject| %>
@@ -27,18 +27,20 @@
 									</ul>
 								</li>
 							<% end %>
-					</ul>
-					<ul id="loginStatus" class="nav navbar-nav navbar-right navbar-inverse">
+					</ul><!-- End Main Nav -->
+						<ul id="loginStatus" class="nav navbar-nav navbar-right navbar-inverse">
 
 						<% if session[:username] %>
-		      		<li class="active">
-		      			Logged in as:  <strong><%= human_name %></strong>
-							</li>
-							<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'btn' + ' navbar-btn' + ' btn-danger' + ' btn-sm') %>
+		      		<p class="navbar-text">
+		      			Logged in as: <%= human_name %>
+							</p>
+							<%= link_to("Admin", {:controller => 'access', :action => 'index'}, :class => 'btn navbar-btn btn-primary btn-sm') %>
+							<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'btn navbar-btn btn-danger btn-sm') %>
 							<% else %>
 								<a href="#loginModal" role="button" class="btn btn-success navbar-btn btn-sm" data-toggle="modal">Log In</a>
 							<% end %>
-      		</ul>
+      		</ul><!-- End loginStatus -->
+				
 	     	</div><!-- .navbar collapse -->
 			</div><!-- Container -->
 		</nav><!-- Navbar -->
