@@ -1,7 +1,14 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
 	font-family: 'Open Sans',Verdana,Lucida,Arial,Helvetica,sans-serif; 
 	font-weight: normal; 
 	padding-top: 70px;
+	margin-bottom: 60px;
+
 }
 
 h1, h2, h3 {
@@ -120,12 +127,11 @@ aside h3 {
 
 #footer {
 	background-color: #333;
-	height: 40px;
+	height: 100px;
 	color: #fff;
 	text-align: right;
 	padding: 10px 10px 0 0;
 	position: absolute;
 	bottom: 0;
-	left: 0;
 	width: 100%;
 }
