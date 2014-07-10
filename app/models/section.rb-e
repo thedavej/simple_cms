@@ -23,6 +23,13 @@ class Section < ActiveRecord::Base
 	scope :sorted_by_subject, lambda { order("sections.page_id ASC") }
 
 
+	def self.search(search)
+  	@section = Section.where('name like ? OR content like ?', "%#{search}%", "%#{search}%")
+
+ 	end
+
+
+
   private
 
   def touch_subject_and_page

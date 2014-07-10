@@ -16,6 +16,12 @@ gem 'sass-rails', '~> 4.0.3'
 # Use Bootstrap-Sass
 gem 'bootstrap-sass', '~> 3.2.0'
 
+# Use Will Paginate
+gem 'will_paginate', '~> 3.0'
+
+# Use Will Paginate-Bootstrap add-on
+gem 'will_paginate-bootstrap'
+
 # Use Autoprefixer for Vendor CSS
 gem 'autoprefixer-rails'
 

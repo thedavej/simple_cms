@@ -63,15 +63,9 @@
 				</div><!-- End Table-Responsive -->
 				<div class="panel-footer">
 					<p><%= pluralize(@pages.size, 'page') %> found</p>
-					 <ul class="pagination pull-right">
-				      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-				      <li class="active"><a href="#">1</a></li>
-				      <li><a href="#">2</a></li>
-				      <li><a href="#">3</a></li>
-				      <li><a href="#">4</a></li>
-				      <li><a href="#">5</a></li>
-				      <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-				    </ul><!-- End Pagination -->
+					<div class="pull-right">
+						<%= will_paginate @collection, renderer: BootstrapPagination::Rails, :previous_label => '<span class="glyphicon glyphicon-chevron-left"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right"></span>' %>
+					</div><!-- End Pagination -->
 				</div><!-- End Panel-Footer -->
 			</div><!-- End Panel -->
 		</div><!-- End Col -->

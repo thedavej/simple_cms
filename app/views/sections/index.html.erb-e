@@ -12,14 +12,43 @@
 						<% end %>
 					</div><!-- End Panel-Heading -->
 					<div class="panel-body">
+						
+						<div class="clearfix"></div>
+
 						<%= link_to("<< Back to Pages", {:controller => 'pages',:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm pull-left') %>
-							<span style="margin-left: 10px;">|</span>
-							<span style="margin-left: 10px;">
-								<%= link_to('View Public Page >>', {:controller => 'public', :action => 'show',:permalink => @page.permalink}, :class => 'btn btn-default btn-sm') %>
-							</span>
+						<span style="margin-left: 10px;">|</span>
+						<span style="margin-left: 10px;">
+							<%= link_to('View Public Page >>', {:controller => 'public', :action => 'show',:permalink => @page.permalink}, :class => 'btn btn-default btn-sm') %>
+						</span>
 						<%= link_to({:action => 'new', :page_id => @page.id }, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Section
 						<% end %>
+
+
+						<!-- Search Form -->
+						<div class="col-md-4 pull-right input-group" style="margin-right: 60px;">
+						 	<%= form_tag(request.path, :method => 'get') do %>
+							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
+							   <span class="input-group-btn">
+							  	<%= button_tag(type: 'submit', class: 'btn btn-default', name: nil) do %>
+									 <span class="glyphicon glyphicon-search"></span>
+									 <% end %>
+									</span>
+							<% end %>
+
+
+
+							<!-- Custom Form -->
+						 <!-- 	<div class="input-group custom-search-form">
+	              <input type="text" class="form-control">
+	              <span class="input-group-btn">
+	              	<button class="btn btn-default" type="button">
+	              		<span class="glyphicon glyphicon-search"></span>
+	             		</button>
+	             	</span>
+             </div> -->
+
+						</div><!-- End Search  -->
 					</div><!-- End Panel-Body -->
 					<div class="table-responsive">
 						<table class="table table-bordered table-striped table-condensed" summary="Section list">
@@ -66,15 +95,9 @@
 					</div><!-- End Table-Responsive -->
 					<div class="panel-footer">
 						<p><%= pluralize(@sections.size, 'section') %> found</p>
-					  <ul class="pagination pull-right">
-				      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-				      <li class="active"><a href="#">1</a></li>
-				      <li><a href="#">2</a></li>
-				      <li><a href="#">3</a></li>
-				      <li><a href="#">4</a></li>
-				      <li><a href="#">5</a></li>
-				      <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-				    </ul><!-- End Pagination -->
+						 <div class="pull-right">
+							<%= will_paginate @sections, renderer: BootstrapPagination::Rails, :previous_label => '<span class="glyphicon glyphicon-chevron-left"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right"></span>' %>
+						</div><!-- End Pagination -->
 					</div><!-- End Panel-Footer -->
 				</div><!-- End Panel -->
 				

@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
   before_action :confirm_logged_in
 
   def index
-  	@subjects = Subject.sorted
+  	@subjects = Subject.sorted.paginate(page: params[:page], per_page: 10)
   end
 
   def show

@@ -8,12 +8,18 @@ class SectionsController < ApplicationController
     # @sections = Section.sorted
     if @page
       @all_sect = false
-      @sections = @page.sections.sorted
+      @sections = @page.sections.sorted.paginate(page: params[:page], per_page: 5).search(params[:search])
     else
       @all_sect = true
-      @sections = Section.newest_first
+      @sections = Section.newest_first.paginate(page: params[:page], per_page: 5).search(params[:search])
       @page = Page.first
     end
+
+
+
+    # For search
+    # @sections = @page.sections.search(params[:search])
+   
   end
 
   def all_index
