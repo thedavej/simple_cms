@@ -23,8 +23,6 @@
 						<%= link_to({:action => 'new', :page_id => @page.id }, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Section
 						<% end %>
-
-
 						<!-- Search Form -->
 						<div class="col-md-4 pull-right input-group" style="margin-right: 60px;">
 						 	<%= form_tag(request.path, :method => 'get') do %>
@@ -35,19 +33,6 @@
 									 <% end %>
 									</span>
 							<% end %>
-
-
-
-							<!-- Custom Form -->
-						 <!-- 	<div class="input-group custom-search-form">
-	              <input type="text" class="form-control">
-	              <span class="input-group-btn">
-	              	<button class="btn btn-default" type="button">
-	              		<span class="glyphicon glyphicon-search"></span>
-	             		</button>
-	             	</span>
-             </div> -->
-
 						</div><!-- End Search  -->
 					</div><!-- End Panel-Body -->
 					<div class="table-responsive">
@@ -62,7 +47,7 @@
 								<th class="col-md-2"></th>
 							</thead>
 							<tbody>
-							<% @sections.each do |section| %>
+							<% @sections.each_with_index do |section, i| %>
 								<td><%= section.position %></td>
 								<td><%= section.page.name if section.page %></td>
 								<td><%= section.name %></td>
@@ -71,7 +56,11 @@
 								<td></td>
 								<td style="text-align: center;">
 									<div class="btn-group">
-										<button type="button" class="btn btn-primary btn-xs">Actions</button>
+										<% if i == 0  && !@all_sect %>
+											<%= link_to("View Public", {:controller => 'public', :action => 'show',:permalink => section.page.permalink}, :class => 'btn btn-primary btn-xs') %>
+										<% else %>
+											<%= link_to("View Public", {:controller => 'public', :action => 'show',:permalink => section.page.permalink, :anchor => section.name}, :class => 'btn btn-primary btn-xs') %>
+										<% end %>
 										<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
 								      <span class="caret"></span>
 								    </button>

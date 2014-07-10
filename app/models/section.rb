@@ -19,6 +19,7 @@ class Section < ActiveRecord::Base
 	scope :visible, lambda { where(:visible => true) }
 	scope :invisible, lambda { where(:visible => false) }
 	scope :sorted, lambda { order("sections.position ASC") }
+	scope :namesorted, lambda { order("sections.name ASC") }
 	scope :newest_first, lambda { order("sections.created_at DESC") }
 	scope :sorted_by_subject, lambda { order("sections.page_id ASC") }
 

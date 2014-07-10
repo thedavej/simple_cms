@@ -17,6 +17,17 @@
 					<%= link_to({:action => 'new', :subject_id => @subject.id}, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Page
 						<% end %>
+						<!-- Search Form -->
+						<div class="col-md-4 pull-right input-group" style="margin-right: 60px;">
+						 	<%= form_for(:sections, :url => {:controller => 'sections', :action => 'index'}, :method => 'get') do %>
+							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
+							   <span class="input-group-btn">
+							  	<%= button_tag(type: 'submit', class: 'btn btn-default', name: nil) do %>
+									 <span class="glyphicon glyphicon-search"></span>
+									 <% end %>
+									</span>
+							<% end %>
+						</div><!-- End Search  -->
 				</div><!-- End Panel-Body -->
 		  	<div class="table-responsive">
 					<table class ="table table-striped table-condensed" summary="Page list">
