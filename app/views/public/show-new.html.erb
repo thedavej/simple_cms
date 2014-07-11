@@ -1,0 +1,55 @@
+<div id="top"></div>
+<% @page.sections.visible.sorted.each do |section| %>
+	<% case section.content_type %>	
+		<% when 'Jumbotron' %>
+			<div class="jumbotron">
+				<h1><%= section.name %></h1>
+				<p>
+					<%= raw(sanitize(section.content, :tags => ['strong', 
+							'em', 'a', 'br', 'p', 'img', 'div',
+							 'h1', 'h2', 'h3', 'h4'])) %>
+				</p>
+				<p>
+					<%= link_to('Edit Page', {:controller => 'sections', 
+	            :page_id => @page.id}, :class => 'btn btn-primary btn-lg') %>
+				</p>
+			</div>
+		<% end %>
+		<div class="row">
+			<article class="left col-md-7">
+				<% case section.content_type %>	
+					<% when 'Article' %>
+						<div class="section">
+							<h2 id="section-<%= section.name %>">
+								<%= section.name %>
+							</h2>
+							<% if section != @page.sections.visible.sorted.first %>
+								<div class="back-to-top">
+									<h4><a href="#top">[back to top]</a></h4>
+								</div>
+							<% end %>
+							<% @last_edit = section.section_edits.last %>
+							<div class="editor">Last edited by <%= @last_edit.editor.name %> at <%= @last_edit.updated_at.localtime %>
+							</div>
+							<%= raw(sanitize(section.content, :tags => ['strong', 
+							'em', 'a', 'br', 'p', 'img', 'div',
+							 'h1', 'h2', 'h3', 'h4'])) %>
+						</div><!-- End Section -->
+				<% end %>
+			</article><!-- End Left Column -->
+
+			<div class="spacer col-md-1">
+			</div><!-- Spacer -->
+
+			<aside class="right col-md-4">
+				<div class="photogrid">
+					<h3 class="aside-title">Photos</h3>
+					<div class="col-xs-6">
+	        	<a href="#" class="thumbnail">
+	          	<img src="http://placehold.it/350x350" class="img-responsive">
+	        	</a>
+	    		</div>
+			</aside><!-- End Right Columns -->
+		</div><!-- End Row -->
+	<% end %>
+<% end %>

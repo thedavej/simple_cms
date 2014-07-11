@@ -1,22 +1,28 @@
-<% @page_title = @page.name %>
-
-<div class="section_title">
-	<h2><%= @page.name %> 
-		<span>
-			<%= link_to('[edit]', {:controller => 'sections', 
-            :page_id => @page.id}, :class => 'name') %> 
-		</span>
-	</h2>
-
+<div id="top">
+	<% @page_title = @page.name %>
 </div>
+	<div class="section_title">
+		<h2><%= @page.name %> 
+			<span>
+				<%= link_to('[edit]', {:controller => 'sections', 
+	            :page_id => @page.id}, :class => 'name') %> 
+			</span>
+		</h2>
 
-<% @page.sections.visible.sorted.each do |section| %>
+		<ul>
+			<% @page.sections.visible.sorted.each do |section| %>
+				<li><%= link_to(section.name, :anchor => 'section-'+ section.name) %></li>
+				<% end %>
+		</ul>
+
+	</div>
+
+	<% @page.sections.visible.sorted.each do |section| %>
 
 		
 
 	<div class="section clear">
-		<a id="<%= section.name %>"</a>
-		<h2><%= section.name %>
+		<h2 id="section-<%= section.name %>" ><%= section.name %>
 		  <span>
 			<%= link_to('[edit]', {:controller => 'sections', :action => 'edit', 
             :id => section.id, :page_id => section.page.id}, :class => 'name') %> 

@@ -54,9 +54,10 @@
 								<%= link_to("View Sections", {:controller => 'sections', 
 									:page_id => page.id}, :class => 'btn btn-primary btn-xs') %>
 									<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-								      <span class="caret"></span>
+								      <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
 								    </button>
 								    <ul class="dropdown-menu" role="menu">
+											<li class="dropdown-header"><%= page.name %></li>
 											<li><%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
 											</li>
 											<li><%= link_to("Edit", {:action => 'edit', :id => page.id, 
