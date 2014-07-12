@@ -26,7 +26,7 @@ gem 'will_paginate-bootstrap'
 gem 'autoprefixer-rails'
 
 # Use Rmagick for image processing
-gem 'rmagick'
+gem 'rmagick', :require => 'RMagick'
 
 # Use Carrier Wave for image uploads
 gem 'carrierwave'

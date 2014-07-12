@@ -1,4 +1,4 @@
-		<%= form_for(:section, :url => {:action => 'update', 
+		<%= form_for(:section, :html => {:multipart => true }, :url => {:action => 'update', 
 				:page_id => @page.id , :id => @section.id}) do |f| %>
 				<div class="modal-body">
 				<%= render(:partial => "form", :locals => {:f => f}) %>

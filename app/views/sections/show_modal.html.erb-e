@@ -9,17 +9,23 @@
 					<td><%= @section.position %></td>
 				</tr>
 				<tr>
-					<th>Visible?</th>
+					<th>Visible</th>
 					<td><%= @section.visible ? 'true' : 'false' %></td>
 				</tr>
 				<tr>
-					<th>Page ID?</th>
+					<th>Page ID</th>
 					<td><%= @section.page_id %></td>
 				</tr>
 				<tr>
 					<th>Content Type</th>
 					<td><%= @section.content_type %></td>
 				</tr>
+				<% if @section.content_type = 'Image' %>
+					<tr>
+						<th>Image URL</th>
+						<td><%= @section.image %></td>
+					</tr>
+					<% end %>
 				<tr>
 					<th>Content</th>
 					<td><%= @section.content %></td>

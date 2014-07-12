@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root "public#index"
     get 'admin', :to => "access#index"
     get 'show/:permalink' , :to => 'public#show'
+    get 'show_new/:permalink' , :to => 'public#show_new'
     get 'test', :to => "demo#index"
   
   # This is the default route. Should go to the bottom!

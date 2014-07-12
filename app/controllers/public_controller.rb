@@ -19,11 +19,16 @@ class PublicController < ApplicationController
   	else
   		# display the page contents using show.html.erb
   	end
+  end
 
-   # recognized = Rails.application.routes.recognize_path(link)
-   
-
-
+  def show_new
+    @page = Page.where(:permalink => params[:permalink], 
+      :visible => true).first
+    if @page.nil?
+      redirect_to(:action => 'index')
+    else
+      # display the page contents using show.html.erb
+    end
   end
 
   def show_pages

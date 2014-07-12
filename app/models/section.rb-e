@@ -8,7 +8,9 @@ class Section < ActiveRecord::Base
 
 	after_save :touch_subject_and_page
 
-	CONTENT_TYPES = ['text', 'HTML']
+	CONTENT_TYPES = ['Jumbotron', 'Article', 'Image']
+
+	mount_uploader :image, ImageUploader
 
 	validates_presence_of :name
 	validates_length_of :name, :maximum => 255
@@ -27,6 +29,15 @@ class Section < ActiveRecord::Base
 	def self.search(search)
   	@section = Section.where('name like ? OR content like ?', "%#{search}%", "%#{search}%")
 
+ 	end
+
+ 	def self.is_image
+ 		if
+ 			self.content_type = 'Image'
+ 			return self
+ 		else
+ 			return nil
+ 		end
  	end
 
 

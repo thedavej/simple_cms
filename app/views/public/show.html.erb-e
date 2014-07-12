@@ -21,38 +21,38 @@
 
 		
 
-	<div class="section clear">
-		<h2 id="section-<%= section.name %>" ><%= section.name %>
-		  <span>
-			<%= link_to('[edit]', {:controller => 'sections', :action => 'edit', 
-            :id => section.id, :page_id => section.page.id}, :class => 'name') %> 
-		  </span>
-		</h2>
+		<div class="section clear">
+			<h2 id="section-<%= section.name %>" ><%= section.name %>
+			  <span>
+				<%= link_to('[edit]', {:controller => 'sections', :action => 'edit', 
+	            :id => section.id, :page_id => section.page.id}, :class => 'name') %> 
+			  </span>
+			</h2>
 
-		<% if section != @page.sections.visible.sorted.first %>
-			<div class="back-to-top">
-				<h4><a href="#top">[back to top]</a></h4>
+			<% if section != @page.sections.visible.sorted.first %>
+				<div class="back-to-top">
+					<h4><a href="#top">[back to top]</a></h4>
+				</div>
+			<% end %>
+
+			<% @last_edit = section.section_edits.last %>
+			<div class="editor">Last edited by <%= @last_edit.editor.name %> at <%= @last_edit.updated_at.localtime %>
 			</div>
-		<% end %>
-
-		<% @last_edit = section.section_edits.last %>
-		<div class="editor">Last edited by <%= @last_edit.editor.name %> at <%= @last_edit.updated_at.localtime %>
+			
+			<% case section.content_type %>
+			<% when 'HTML' %>
+			  <%= raw(sanitize(section.content, :tags => ['strong', 
+					'em', 'a', 'br', 'p', 'img', 'div',
+					 'h1', 'h2', 'h3', 'h4'])) %>
+			<% when 'text' %>
+			  <p><%= section.content %></p>
+			<% end %>
 		</div>
-		
-		<% case section.content_type %>
-		<% when 'HTML' %>
-		  <%= raw(sanitize(section.content, :tags => ['strong', 
-				'em', 'a', 'br', 'p', 'img', 'div',
-				 'h1', 'h2', 'h3', 'h4'])) %>
-		<% when 'text' %>
-		  <p><%= section.content %></p>
-		<% end %>
+	<% end %>
+	<div class="back-to-top clear">
+		<h4><a href="#top">[back to top]</a></h4>
+		<br />
 	</div>
-<% end %>
-<div class="back-to-top clear">
-	<h4><a href="#top">[back to top]</a></h4>
-	<br />
-</div>
 
 
 

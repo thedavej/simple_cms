@@ -26,14 +26,14 @@
 		
 		<!-- Flash Messages -->
 		<%= render(:partial => 'layouts/flash_messages') %>
-		<div class="container theme-showcase" role="main">
+		<div class="container" role="main">
 
 				
 
 				<%= yield %>
 			
 
-		</div>
+		</div><!-- End Container -->
 				
 		<!-- <div id="footer">
 			<p id="copyright">&copy; Dave Johnson</p>

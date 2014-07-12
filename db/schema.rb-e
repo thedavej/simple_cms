@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507064828) do
+ActiveRecord::Schema.define(version: 20140711202503) do
 
   create_table "admin_users", force: true do |t|
     t.string   "first_name",      limit: 25
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140507064828) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   add_index "sections", ["page_id"], name: "index_sections_on_page_id", using: :btree

@@ -8,10 +8,10 @@ class SectionsController < ApplicationController
     # @sections = Section.sorted
     if @page
       @all_sect = false
-      @sections = @page.sections.sorted.paginate(page: params[:page], per_page: 5).search(params[:search])
+      @sections = @page.sections.sorted.paginate(page: params[:page], per_page: 10).search(params[:search])
     else
       @all_sect = true
-      @sections = Section.all.sorted_by_subject.namesorted.paginate(page: params[:page], per_page: 5).search(params[:search])
+      @sections = Section.all.sorted_by_subject.namesorted.paginate(page: params[:page], per_page: 10).search(params[:search])
       @page = Page.first
     end
 
@@ -34,7 +34,7 @@ class SectionsController < ApplicationController
   end
 
   def new
-    @section = Section.new({:page_id => @page.id, :content_type => 'HTML'})
+    @section = Section.new({:page_id => @page.id, :content_type => 'Article'})
     @pages = @page.subject.pages.sorted
     @section_count = @page.sections.count + 1
     render action: "new_modal", layout: "crud_modal"
@@ -53,7 +53,7 @@ class SectionsController < ApplicationController
     else
       @pages = Page.order('position ASC')
       @section_count = @page.sections.count + 1
-      render('new')
+      render('new_modal')
     end
   end
 
@@ -100,7 +100,7 @@ class SectionsController < ApplicationController
   private
 
   def sections_params
-    params.require(:section).permit(:name, :position, :visible, :page_id, :content, :content_type)
+    params.require(:section).permit(:name, :position, :visible, :page_id, :content, :content_type, :image)
   end
 
   def find_page
