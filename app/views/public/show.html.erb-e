@@ -1,60 +1,79 @@
-<div id="top">
-	<% @page_title = @page.name %>
-</div>
-	<div class="section_title">
-		<h2><%= @page.name %> 
-			<span>
-				<%= link_to('[edit]', {:controller => 'sections', 
-	            :page_id => @page.id}, :class => 'name') %> 
-			</span>
-		</h2>
-
-		<ul>
-			<% @page.sections.visible.sorted.each do |section| %>
-				<li><%= link_to(section.name, :anchor => 'section-'+ section.name) %></li>
-				<% end %>
-		</ul>
-
-	</div>
-
+<div id="top"></div>
 	<% @page.sections.visible.sorted.each do |section| %>
-
-		
-
-		<div class="section clear">
-			<h2 id="section-<%= section.name %>" ><%= section.name %>
-			  <span>
-				<%= link_to('[edit]', {:controller => 'sections', :action => 'edit', 
-	            :id => section.id, :page_id => section.page.id}, :class => 'name') %> 
-			  </span>
-			</h2>
-
-			<% if section != @page.sections.visible.sorted.first %>
-				<div class="back-to-top">
-					<h4><a href="#top">[back to top]</a></h4>
+		<% case section.content_type %>	
+			<% when 'Jumbotron' %>
+				<div class="jumbotron">
+					<h1><%= section.name %></h1>
+					<p>
+						<%= raw(sanitize(section.content, :tags => ['strong', 
+								'em', 'a', 'br', 'p', 'img', 'div',
+								 'h1', 'h2', 'h3', 'h4'])) %>
+					</p>
+					<p>
+						<%= link_to('Edit Page', {:controller => 'sections', 
+		            :page_id => @page.id}, :class => 'btn btn-primary btn-lg') %>
+					</p>
 				</div>
-			<% end %>
-
-			<% @last_edit = section.section_edits.last %>
-			<div class="editor">Last edited by <%= @last_edit.editor.name %> at <%= @last_edit.updated_at.localtime %>
-			</div>
+		<% end %><!-- End Content Jumbotron Check -->
+	<% end %><!-- End Loop -->
+		<div class="row">
+			<article class="left col-md-7">
+			<% @page.sections.visible.sorted.each do |section| %>
+				<% case section.content_type %>	
+					<% when 'Article' %>
+						<div class="section">
+							<h2 id="section-<%= section.name %>">
+								<%= section.name %>
+							</h2>
+							<% if section != @page.sections.is_article.visible.sorted.first %>
+								<div class="back-to-top">
+									<h4><a href="#top">[back to top]</a></h4>
+								</div>
+							<% end %>
+							<% @last_edit = section.section_edits.last %>
+							<div class="editor">Last edited by <%= @last_edit.editor.name %> at <%= @last_edit.updated_at.localtime %>
+							</div>
+							<%= raw(sanitize(section.content, :tags => ['strong', 
+							'em', 'a', 'br', 'p', 'img', 'div',
+							 'h1', 'h2', 'h3', 'h4'])) %>
+						</div><!-- End Section -->
+				<% end %><!-- End Content Article Check -->
+			<% end %><!-- End Loop -->
+			</article><!-- End Left Column -->
 			
-			<% case section.content_type %>
-			<% when 'HTML' %>
-			  <%= raw(sanitize(section.content, :tags => ['strong', 
-					'em', 'a', 'br', 'p', 'img', 'div',
-					 'h1', 'h2', 'h3', 'h4'])) %>
-			<% when 'text' %>
-			  <p><%= section.content %></p>
-			<% end %>
-		</div>
-	<% end %>
-	<div class="back-to-top clear">
-		<h4><a href="#top">[back to top]</a></h4>
-		<br />
-	</div>
+			<div class="spacer col-md-1">
+			</div><!-- Spacer -->
 
-
-
-
-
+			<aside class="right col-md-4">
+				<div class="row">
+					<div class="photogrid">
+						<h3 class="aside-title">Photos</h3>
+						<% @page.sections.visible.sorted.each do |section, i| %>
+						<!-- Begin Image Check -->
+						<% case section.content_type %>	
+							<% when 'Image' %>
+									<div class="col-xs-6">
+					        	<%= link_to(image_tag(section.image_url(:thumb), :class => 'image-responsive'), section.image_url, :class =>'thumbnail') %>
+					        	<p class="caption">
+					        		<%= raw(section.content) %>
+					        	</p>
+				        	</div><!-- End Col -->
+		        	<% end %><!-- End Content Image Check -->
+	        	<% end  %><!-- End Loop -->
+	    		</div><!-- End Photogrid -->
+    		</div><!-- End Aside Row 1 -->
+    		<div class="row">
+	    		<div class="tech-specs clearfix">
+	          <h3 class="aside-title">Specifications</h3>
+						<% @page.sections.visible.sorted.each do |section| %>
+							<% case section.content_type %>
+								<% when 'Specifications' %>
+									<table class="table table-bordered table-striped">
+										<%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a', 'br', 'p', 'img', 'div','h1', 'h2', 'h3', 'h4', 'tr', 'th', 'td'])) %>
+									</table>
+								<% end %><!-- End Content Check Specifications -->
+							<% end %><!-- End Loop -->
+					</div>
+				</div><!-- End Aside Row 2 -->
+			</aside><!-- End Right Columns -->
+		</div><!-- End Row -->

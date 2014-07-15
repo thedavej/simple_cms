@@ -1,0 +1,14 @@
+<%= error_messages_for(@section) %> 
+	
+		<%= f.text_area(:content, :size => '40x10') %>
+			
+			<div class="clearfix">
+				<button type="button" class="btn btn-primary btn-xs" id="button"  onclick="addField('specs')">Add Field</button>
+			</div>
+				<table name="specs" id="specs" class="table table-bordered table-condensed">
+			      <tr>
+			         <td><input type="text" class="ilabel"/></td>
+			         <td><input type="text" class="icontent"/></td>
+			      </tr>
+				</table>
+			

@@ -15,3 +15,38 @@ $(document).ready (function(){
 $('#new').on('shown.bs.modal', function () {
 	    $('#new_name').focus();
 			})});
+
+// Specifications Table Data Creation
+function addField(tableid)
+{
+	var row = document.createElement("tr");
+	var col1 = document.createElement("td");
+ 	var col2 = document.createElement("td");
+	var inputa = document.createElement("input");
+	var inputb = document.createElement("input");
+
+	inputa.setAttribute("type","text");
+	inputb.setAttribute("type","text");
+	inputa.setAttribute("class","ilabel");
+	inputb.setAttribute("class","icontent");
+
+
+	col1.appendChild(inputa);
+	col2.appendChild(inputb);
+
+
+ row.appendChild(col1);
+ row.appendChild(col2);
+
+
+ var tbox = document.getElementById("section_content");
+
+	var able = $(".ilabel").last().val();
+	var baker = $(".icontent").last().val();
+	tbox.value += "<tr><th>"+able+"</th><td>"+baker+"</td></tr>";	
+
+
+ var table = document.getElementById(tableid);
+ table.appendChild(row);
+ 
+}

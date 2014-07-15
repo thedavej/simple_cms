@@ -8,7 +8,7 @@ class Section < ActiveRecord::Base
 
 	after_save :touch_subject_and_page
 
-	CONTENT_TYPES = ['Jumbotron', 'Article', 'Image']
+	CONTENT_TYPES = ['Jumbotron', 'Article', 'Image', 'Specifications']
 
 	mount_uploader :image, ImageUploader
 
@@ -20,6 +20,7 @@ class Section < ActiveRecord::Base
 
 	scope :visible, lambda { where(:visible => true) }
 	scope :invisible, lambda { where(:visible => false) }
+	scope :is_article, lambda { where(:content_type => 'Article') }
 	scope :sorted, lambda { order("sections.position ASC") }
 	scope :namesorted, lambda { order("sections.name ASC") }
 	scope :newest_first, lambda { order("sections.created_at DESC") }
@@ -31,18 +32,14 @@ class Section < ActiveRecord::Base
 
  	end
 
- 	def self.is_image
+ 	def has_image
  		if
  			self.content_type = 'Image'
- 			return self
- 		else
- 			return nil
+ 			return true
  		end
  	end
 
-
-
-  private
+ 	private
 
   def touch_subject_and_page
   	page.subject.touch

@@ -14,12 +14,8 @@ class SectionsController < ApplicationController
       @sections = Section.all.sorted_by_subject.namesorted.paginate(page: params[:page], per_page: 10).search(params[:search])
       @page = Page.first
     end
-
-
-
     # For search
     # @sections = @page.sections.search(params[:search])
-
   end
 
   def all_index
@@ -53,7 +49,7 @@ class SectionsController < ApplicationController
     else
       @pages = Page.order('position ASC')
       @section_count = @page.sections.count + 1
-      render('new_modal')
+      render('new')
     end
   end
 
@@ -62,6 +58,13 @@ class SectionsController < ApplicationController
     @pages = Page.order('position ASC')
     @section_count = @page.sections.count
     render action: "edit_modal", layout: "crud_modal"
+  end
+
+  def edit_specifications
+    @section = Section.find(params[:id])
+    @pages = Page.order('position ASC')
+    @section_count = @page.sections.count
+    render action: "edit2"
   end
 
   def update

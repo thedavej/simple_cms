@@ -7,27 +7,22 @@ var i = 3;
 function addField(tableid)
 {
    var row = document.createElement("tr");
-   var col1 = document.createElement("th");
+   var col1 = document.createElement("td");
    var col2 = document.createElement("td");
-   var col3 = document.createElement("th");
-   var col4 = document.createElement("td"); 
    var inputa = document.createElement("input");
    var inputb = document.createElement("input");
  
    inputa.setAttribute("type","text");
-   inputa.setAttribute("name","label" + i );
    inputb.setAttribute("type","text");
-   inputb.setAttribute("name","contnet" + i );
+   
  
-   col1.appendChild(document.createTextNode("Label " + i));
-   col2.appendChild(inputa);
-   col3.appendChild(document.createTextNode("Content " + i));
-   col4.appendChild(inputb);
+   col1.appendChild(inputa);
+   col2.appendChild(inputb);
+
  
    row.appendChild(col1);
    row.appendChild(col2);
-   row.appendChild(col3);
-   row.appendChild(col4);
+
  
    var table = document.getElementById(tableid);
  
@@ -42,13 +37,19 @@ function addField(tableid)
  
 <form name="myform" action="myfile.php" method="post" id="myform">
 <table id="fieldTable">
- 
-<tr><td><input type="button" value="Add field" id="button"  onclick="addField('fieldTable')" /></td></tr>
-<tr>
-   <th>Label 1 : </th>
-   <td><input type="text" name="label1" /></td>
-   <th>Content 1: </th>
-   <td><input type="text" name="content1" /></td></tr>
+   <thead>
+      <tr>
+         <th>Label</th>
+         <th>Content</th>
+         <td><input type="button" value="Add field" id="button"  onclick="addField('fieldTable')" /></td>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><input type="text" name="label1" /></td>
+         <td><input type="text" name="content1" /></td>
+      </tr>
+      </tbody> 
 </table>
 <table>
 <tr><td><input type="submit"/></td></tr>
