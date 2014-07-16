@@ -49,19 +49,20 @@
 					<div class="photogrid">
 						<h3 class="aside-title">Photos</h3>
 						<% @page.sections.visible.sorted.each do |section, i| %>
-						<!-- Begin Image Check -->
-						<% case section.content_type %>	
-							<% when 'Image' %>
+							<!-- Begin Image Check -->
+							<% case section.content_type %>	
+								<% when 'Image' %>
 									<div class="col-xs-6">
-					        	<%= link_to(image_tag(section.image_url(:thumb), :class => 'image-responsive'), section.image_url, :class =>'thumbnail') %>
+					        	<%= link_to(image_tag(section.image_url(:thumb), :class => 'image-responsive'), section.image_url, :class =>'thumbnail', :data => {:gallery => ''}) %>
 					        	<p class="caption">
 					        		<%= raw(section.content) %>
 					        	</p>
 				        	</div><!-- End Col -->
-		        	<% end %><!-- End Content Image Check -->
-	        	<% end  %><!-- End Loop -->
-	    		</div><!-- End Photogrid -->
+			        	<% end %><!-- End Content Image Check -->
+		        	<% end  %><!-- End Loop -->
+					</div><!-- End Photogrid -->
     		</div><!-- End Aside Row 1 -->
+
     		<div class="row">
 	    		<div class="tech-specs clearfix">
 	          <h3 class="aside-title">Specifications</h3>
@@ -77,3 +78,7 @@
 				</div><!-- End Aside Row 2 -->
 			</aside><!-- End Right Columns -->
 		</div><!-- End Row -->
+
+<%= render(:partial => 'layouts/bootstrap_image_gallery') %>
+
+

@@ -12,6 +12,7 @@
  *  
  *= require_self
  *= require custom.css.scss
+ *= require bootstrap-image-gallery.css
  */
 @import "bootstrap";
 @import "bootstrap/theme";

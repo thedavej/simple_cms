@@ -61,7 +61,7 @@
 			 				</div>
 				 		</div>
 
-				    <div id="article" class="tab-pane active" >
+				    <div id="article" class="tab-pane" >
 				        <div class="form-group">
 						 	 </div>
 				    </div>
@@ -69,7 +69,10 @@
 				    <div id="image" class="tab-pane" >
 				        <div class="form-group">
 				        <h4>Upload Image</h4>
-							 	 	<%= f.file_field(:image) %>
+							 		<%= f.file_field(:image) %>
+							 	 	<% if @section.image_url(:thumb) %>
+							 	 		<%= image_tag(@section.image_url(:thumb), :class => 'image-responsive admin-thumbnail') %>
+						 	 		<% end %>
 							 	 </div>
 				    </div>
 
