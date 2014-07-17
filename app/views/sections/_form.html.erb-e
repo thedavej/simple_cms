@@ -38,16 +38,16 @@
 	  		<div class="col-md-9">
 	  			<div class="btn-group">
 	  				<label class="btn btn-default btn-sm">
-		  				<%= f.radio_button(:content_type, "Jumbotron", :data => {:target => '#jumbotron'})  %> Jumbotron
+		  				<%= f.radio_button(:content_type, "Jumbotron", :data => {:target => '#jumbotron'}, :id => 'radio-jumbotron')  %> Jumbotron
 						</label>
 		  			<label class="btn btn-default btn-sm">
-		  				<%= f.radio_button(:content_type, "Article", :data => {:target => '#article'})  %> Article
+		  				<%= f.radio_button(:content_type, "Article", :data => {:target => '#article'}, :id => 'radio-article')  %> Article
 						</label>
 		  			<label class="btn btn-default btn-sm">
-		  				<%= f.radio_button(:content_type, "Image", :data => {:target => '#image'})  %> Image
+		  				<%= f.radio_button(:content_type, "Image", :data => {:target => '#image'}, :id => 'radio-image')  %> Image
 						</label>
 		  			<label class="btn btn-default btn-sm">
-		  				<%= f.radio_button(:content_type, "Specifications", :data => {:target => '#specifications'})  %> Specs
+		  				<%= f.radio_button(:content_type, "Specifications", :data => {:target => '#specifications'}, :id => 'radio-specifications')  %> Specs
 						</label>
 	 	 			</div><!-- End Btn-Group -->
 				</div><!-- End Col -->

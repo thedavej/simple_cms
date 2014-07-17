@@ -1,21 +1,40 @@
 <%= error_messages_for(@page) %>
 
 
-	  	<div class="form-group">
-	 	 	<%= f.label(:name) %>
-	 	 	<%= f.text_field(:name, :id => 'new_name',  :class => 'form-control', :placeholder => 'Name') %>
-		  </div>
-	 	 <div class="form-group">
-	 	 	<%= f.label(:position) %>
-	  		<%= f.select(:position, 1..@page_count) %>
-	  	</div>
-	  	<div class="form-group">
-	  		<%= f.label(:visible) %>
-	  		<%= f.check_box(:visible) %>
-	 	 </div><div class="form-group">
-	  		<%= f.label(:subject_id, 'Subject') %>
-	  		<%= f.select(:subject_id, @subjects.map { |s| [s.name, s.id] }) %>
-	 	 </div><div class="form-group">
-	  		<%= f.label(:permalink) %>
-	  		<%= f.text_field(:permalink, :class => 'form-control') %>
-	 	 </div>
+				<div class="form-group row">
+					<div class="col-md-2">
+						<%= f.label(:name) %>
+					</div>
+					<div class="col-md-6">
+						<%= f.text_field(:name, :id => 'new_name',  :class => 'form-control', :placeholder => 'Name') %>
+					</div>
+				</div><!-- End Row 1 -->
+				<div class="form-group row">
+					<div class="col-md-2">
+						<%= f.label(:subject_id, 'Subject') %>
+					</div>
+					<div class="col-md-3">
+						<%= f.select(:subject_id, @subjects.map { |s| [s.name, s.id] }) %>
+					</div>
+
+					<div class="col-md-2">
+						<%= f.label(:position) %>
+					</div>
+					<div class="col-md-2">
+						<%= f.select(:position, 1..@page_count) %>
+					</div>
+					<div class="col-md-1">
+						<%= f.label(:visible) %>
+					</div>
+					<div class="col-md-1">
+						<%= f.check_box(:visible) %>
+					</div>
+				</div><!-- End Row 2 -->
+				<div class="form-group row">
+					<div class="col-md-2">
+						<%= f.label(:permalink) %>
+					</div>
+					<div class="col-md-5">
+						<%= f.text_field(:permalink, :class => 'form-control') %>
+					</div>
+				</div>

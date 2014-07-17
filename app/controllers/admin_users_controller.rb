@@ -8,7 +8,8 @@ class AdminUsersController < ApplicationController
   end
 
   def new
-    @admin_user = AdminUser.new
+    @admin_user = AdminUser.new({})
+    render action: "new_modal", layout: "crud_modal"
   end
 
   def create
@@ -23,6 +24,7 @@ class AdminUsersController < ApplicationController
 
   def edit
     @admin_user = AdminUser.find(params[:id])
+    render action: "edit_modal", layout: "crud_modal"
   end
 
   def update
@@ -37,6 +39,7 @@ class AdminUsersController < ApplicationController
 
   def delete
     @admin_user = AdminUser.find(params[:id])
+    render action: "delete_modal", layout: "crud_modal"
   end
 
   def destroy

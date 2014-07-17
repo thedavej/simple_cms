@@ -16,6 +16,18 @@ $('#new').on('shown.bs.modal', function () {
 	    $('#new_name').focus();
 			})});
 
+	// Display correct tab in edit modal
+$(document).ready (function(){
+$('#edit').on('shown.bs.modal', function () {
+	   	if($('#radio-image').is(':checked')) { 
+	   		$('#radio-image').tab('show'); }
+	   	if($('#radio-specifications').is(':checked')) { 
+	   		$('#radio-specifications').tab('show'); }
+			})});
+
+
+
+
 // Specifications Table Data Creation
 function addField(tableid)
 {

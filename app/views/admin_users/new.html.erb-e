@@ -3,7 +3,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-5">
+		<div class="col-md-1"></div>
+		<div class="col-md-7">
 			<h2>Create Admin User</h2>
 			
 				<%= form_for(:admin_user, :url => {:action => 'create'}) do |f| %>
@@ -13,7 +14,8 @@
 					<%= submit_tag("Create", :class => 'btn btn-success btn-xs') %>
 				</div>
 			  <% end %>
-			</div>
-		</div> 
-</div>
+			</div><!-- End Col -->
+			<div class="col-md-1"></div>
+		</div> <!-- End Row -->
+</div><!-- End Container -->
 

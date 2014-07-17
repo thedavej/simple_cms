@@ -1,0 +1,23 @@
+<% @page_title = "Edit" %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-7">
+			<h2>Update Page</h2>
+
+			<%= form_for(:page, :url => {:action => 'update', :id => @page.id, 
+					:subject_id => @subject.id}) do |f| %>
+				<%= render(:partial => "form", :locals => {:f => f}) %>
+			<div class="form-buttons">
+				<%= link_to("Cancel", {:action => 'index', :subject_id => @subject.id}, :class => 'btn btn-default btn-sm') %>
+				<%= submit_tag("Update", :class => 'btn btn-success btn-sm') %>
+			</div>
+
+		  <% end %>
+		</div><!-- End Col -->
+		<div class="col-md-1"></div>
+	</div><!-- End Row -->
+</div><!-- End Container -->
+

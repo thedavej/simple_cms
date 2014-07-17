@@ -51,10 +51,11 @@
 								       <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
 								    </button>
 								    <ul class="dropdown-menu" role="menu">
-								      <li><%= link_to("Show "+ subject.name, {:action => 'show', :id => subject.id},:class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+								    	<li class="dropdown-header"><%= subject.name %></li>
+								      <li><%= link_to("Show", {:action => 'show', :id => subject.id},:class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
 								      </li>
-								      <li><%= link_to("Edit "+ subject.name, {:action => 'edit', :id => subject.id}, :class => '', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %></li>
-								      <li><%= link_to("Delete" + subject.name, {:action => 'delete', :id => subject.id}, :class => '', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %></li>
+								      <li><%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => '', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %></li>
+								      <li><%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => '', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %></li>
 								    </ul>
 								  </div>
 								</td>

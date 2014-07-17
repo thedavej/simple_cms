@@ -3,7 +3,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-5">
+		<div class="col-md-1"></div>
+		<div class="col-md-7">
 			<h2>Edit Admin User</h2>
 			
 				<%= form_for(:admin_user, :url => {:action => 'update', :id => @admin_user.id}) do |f| %>
@@ -14,8 +15,8 @@
 				</div>
 			  <% end %>
 					
-			</div>
-		</div>
-  
-</div>
+			</div><!-- End Col -->
+			<div class="col-md-1"></div>
+		</div><!-- End Row -->
+</div><!-- End Container -->
 
