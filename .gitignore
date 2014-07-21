@@ -26,3 +26,6 @@
 
 # Ignore Sass cache
 /app/assets/stylesheets/.sass-cache
+
+# Ignore .DS_Store
+.DS_Store

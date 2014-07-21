@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+# gem 'mysql2'
 
 gem 'acts_as_list', '~> 0.4.0'
 
@@ -30,6 +30,9 @@ gem 'rmagick', :require => 'RMagick'
 
 # Use Carrier Wave for image uploads
 gem 'carrierwave'
+
+# Use Postgres for the database
+gem 'pg', '~> 0.17.1'
 
 # Use Uglifier as compressor for JavaScript assets
 # gem 'uglifier', '>= 1.3.0'
