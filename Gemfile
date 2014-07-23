@@ -37,6 +37,9 @@ gem 'pg', '~> 0.17.1'
 # Enable STDOUT logging for Heroku
 gem 'rails_12factor', group: :production
 
+# Use Uglifier
+gem 'uglifier', '~> 2.5.3'
+
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 	
