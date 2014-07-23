@@ -8,7 +8,7 @@ gem 'rails', '4.1.0'
 
 gem 'acts_as_list', '~> 0.4.0'
 
-gem 'awesome_print', '~> 1.2.0'
+gem 'awesome_print', '~> 1.2.0', group: :development
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
