@@ -16,5 +16,6 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require dj-custom.js
 //= require bootstrap
 //= require_tree .
