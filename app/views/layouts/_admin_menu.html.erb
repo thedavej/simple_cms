@@ -13,7 +13,7 @@
 					<ul class="nav navbar-nav">
 						<li><%= link_to("Home", {:controller => 'access', :action => 'index'}) %></li>
 				  	<li class="dropdown">
-					  	<a class="dropdown-toggle" adata-toggle="dropdown">Admin Menu
+					  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Menu
               <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><%= link_to("Manage Content", {:controller => 'subjects'}) %></li>
@@ -24,17 +24,23 @@
               </ul><!-- End Dropdown-menu -->
             </li>
 					</ul><!-- End Navbar-left -->
-					<ul id="loginStatus" class="nav navbar-nav navbar-inverse navbar-right">
-
+					<ul id="loginStatus" class="nav navbar-nav navbar-right">
 						<% if session[:username] %>
-		      		<p class="navbar-text">
-		      			Logged in as: <%= human_name %>
-							</p>
-							<%= link_to("Public", {:controller => 'public', :action => 'index'}, :class => 'btn navbar-btn btn-primary btn-sm') %>
-
-							<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'btn' + ' navbar-btn' + ' btn-danger' + ' btn-sm') %>
-							<% else %>
-								<a href="#loginModal" role="button" class="btn btn-success navbar-btn btn-sm" data-toggle="modal">Log In</a>
+	      			<li id ="menuLogin" class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= human_name %><span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li>
+										<%= link_to("View Public Area", {:controller => 'public', :action => 'index'}) %>
+									</li>
+									<li>
+										<%= link_to("Sign Out", {:controller => 'access', :action => 'logout'}) %>
+									</li>
+								</ul>
+						<% else %>
+							<li>
+								<a href="#loginModal" role="button" class="" data-toggle="modal">Log In</a>
+							</li>
+							
 							<% end %>
       		</ul>
 	     	</div><!-- .navbar collapse -->
