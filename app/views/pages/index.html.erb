@@ -12,8 +12,10 @@
 					<% end %>
 				</div><!-- End Panel-Heading -->
 				<div class="panel-body">
-					<%= link_to("<< Back to Vehicles", {:controller => 'subjects', 
-								:action => 'index'}, :class => 'btn btn-default btn-sm pull-left') %>
+					<%= link_to({:controller => 'subjects', 
+								:action => 'index'}, :class => 'btn btn-default btn-sm pull-left') do %>
+						<span class="glyphicon glyphicon-chevron-left"></span> Back to Vehicles
+						<% end %>
 					<%= link_to({:action => 'new', :subject_id => @subject.id}, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Page
 						<% end %>

@@ -31,7 +31,7 @@
 								</div>
 							<% end %>
 							<% @last_edit = section.section_edits.last %>
-							<div class="editor">Last edited by <%= @last_edit.editor.name %> at <%= @last_edit.updated_at.localtime %>
+							<div class="editor">Last edited by <%= @last_edit.editor.name %> on <%= @last_edit.updated_at.localtime.to_s(:nice) %>
 							</div>
 							<%= raw(sanitize(section.content, :tags => ['strong', 
 							'em', 'a', 'br', 'p', 'img', 'div',

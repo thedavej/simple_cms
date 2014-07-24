@@ -9,7 +9,9 @@
 				</div><!-- End Panel Heading -->
 				<div class="panel-body">
 					<div class="clearfix"></div>
-					<%= link_to("<< Back to Main Menu", {:controller => 'access',:action => 'index'}, :class => 'btn btn-default btn-sm') %>
+					<%= link_to({:controller => 'access',:action => 'index'}, :class => 'btn btn-default btn-sm') do %>
+					<span class="glyphicon glyphicon-chevron-left"></span> Back to Main Menu
+					<% end %>
 
 					<%= link_to({:action => 'new'}, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'New', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Admin User
