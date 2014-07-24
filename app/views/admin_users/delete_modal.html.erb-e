@@ -1,11 +1,12 @@
 		<%= form_for(:admin_user, :url => {:action => 'destroy', :id => @admin_user.id}) do |f| %>
 			<div class="modal-body">
-				<%= render(:partial => "form", :locals => {:f => f}) %>	
+				<div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> &nbsp;Are you sure you want to delete <%= @admin_user.name %>?</div>
+      	</div>
 			</div><!-- End body -->
       <div class="modal-footer ">
-        <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", style: "width: 100%;", name: "commit") do %>
-				 <span class="glyphicon glyphicon-ok-sign"></span>Create
-				<% end %>
+       <button type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span> No</button>
+      	<%= button_tag(type: "submit", class: "btn btn-danger", name: "commit") do %>
+      		<span class="glyphicon glyphicon-ok-sign"></span> Yes
+      	<% end %>
 			</div><!-- End Footer -->
 			<% end %>
-      
