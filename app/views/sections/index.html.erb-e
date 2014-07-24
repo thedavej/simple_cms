@@ -92,7 +92,7 @@
 						</table>
 					</div><!-- End Table-Responsive -->
 					<div class="panel-footer">
-						<p><%= pluralize(@sections.size, 'section') %> found</p>
+						<p><%= pluralize(@sections.total_entries, 'section') %> found</p>
 						 <div class="pull-right">
 							<%= will_paginate @sections, renderer: BootstrapPagination::Rails, :previous_label => '<span class="glyphicon glyphicon-chevron-left"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right"></span>' %>
 						</div><!-- End Pagination -->

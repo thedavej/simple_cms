@@ -21,7 +21,7 @@
 	 	 		<%= f.label(:position) %>
  	 		</div>
  	 		<div class="col-md-2">
-	  		<%= f.select(:position, 1..@section_count) %>
+	  		<%= f.select(:position, 1..@section_count, :selected => @section_count) %>
   		</div>
   		<div class="col-md-1">
   			<%= f.label(:visible) %>
@@ -86,7 +86,7 @@
 								      </tr>
 									</table>
 									<div class="clearfix">
-										<button type="button" class="btn btn-primary btn-xs" id="button"  onclick="addField('specs')">Add Field</button>
+										<button type="button" class="btn btn-primary btn-xs" id="button"  onclick="addField('specs')"><span class="glyphicon glyphicon-plus-sign"></span> Add To Table</button>
 									</div>
 				        </div><!-- End Form-Group -->
 				    </div><!-- End Specifications Pane -->
@@ -96,9 +96,9 @@
 
 			<div class="form-group row">
 				<div class="col-md-2">
-					<%= f.label(:content) %>
 				</div>
 				<div class="col-md-8">
+					<%= f.label(:content) %>
 		  		<%= f.text_area(:content, :size => '40x10') %>
 				</div>
 			</div>
