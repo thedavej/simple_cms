@@ -9,10 +9,14 @@
 								'em', 'a', 'br', 'p', 'img', 'div',
 								 'h1', 'h2', 'h3', 'h4'])) %>
 					</p>
-					<p>
-						<%= link_to('Edit Page', {:controller => 'sections', 
-		            :page_id => @page.id}, :class => 'btn btn-primary btn-lg') %>
-					</p>
+					<% if session[:username] %>
+						<p>
+							<%= link_to('Edit Page', {:controller => 'sections', 
+			            :page_id => @page.id}, :class => 'btn btn-primary btn-lg') %>
+						</p>
+					<% else %>
+						<a href="#loginModal" role="button" class="btn btn-primary btn-lg" data-toggle="modal">Edit Page</a>
+					<% end %>
 				</div>
 		<% end %><!-- End Content Jumbotron Check -->
 	<% end %><!-- End Loop -->
