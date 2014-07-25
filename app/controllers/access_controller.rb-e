@@ -26,7 +26,11 @@ class AccessController < ApplicationController
   		# Mark user as logged in
       session[:user_id] = authorized_user.id
       session[:username] = authorized_user.username
-  		redirect_to(:action => 'index')
+  		if params[:page_id]
+        redirect_to(:controller => 'sections', :action => 'index', :page_id => params[:page_id])
+        else
+        redirect_to(:action => 'index')
+      end
   	else
   		flash[:danger] = "Invalid username/password combination."
   		redirect_to(:action => 'login')

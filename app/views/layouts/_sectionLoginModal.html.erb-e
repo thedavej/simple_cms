@@ -1,5 +1,5 @@
 <!-- Begin Modal -->
-			<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mainLoginModal" aria-hidden="true">
+			<div id="sectionLoginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="sectionLoginModal" aria-hidden="true">
 			  <div class="modal-dialog modal-sm">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -11,10 +11,10 @@
 				      	<div class="panel-heading"><h2 class="panel-title">Please Sign in</h2>
 					      </div>
 				 				<div class="panel-body">
-					         <%= form_tag(:controller => 'access', :action => 'attempt_login') do %>
+					        	<%= form_tag(:controller => 'access', :action => 'attempt_login', :page_id => (@page.id if @page) ) do %>
 				        	<div class="">
 					         	<div class="form-group">
-						          <%= text_field_tag((:username), nil, :class => 'form-control', :style => 'border-radious:0px', :id => 'username', :placeholder => 'Enter username') %>
+						          <%= text_field_tag((:username), nil, :class => 'form-control', :style => 'border-radious:0px', :id => 's-username', :placeholder => 'Enter username') %>
 					         	</div>
 						        <div class="form-group">
 				            	<%= password_field_tag((:password), nil, :class => 'form-control', :style => 'border-radious:0px', :id => 'password', :placeholder => 'Password') %>

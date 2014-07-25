@@ -53,3 +53,4 @@
 		</nav><!-- Navbar -->
 
 		<%= render(:partial => 'layouts/loginModal') %>
+		<%= render(:partial => 'layouts/sectionLoginModal') %>

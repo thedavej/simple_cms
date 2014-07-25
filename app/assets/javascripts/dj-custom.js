@@ -4,11 +4,17 @@ $(document).ready (function(){
     			$(".alert-dismissable").alert('close');
 		})});
 
-// Text auto-focus on loginModal
+// Text auto-focus on login modals
 $(document).ready (function(){
 $('#loginModal').on('shown.bs.modal', function () {
 	    $('#username').focus();
-			})});
+			})
+$('#sectionLoginModal').on('shown.bs.modal', function () {
+	    $('#s-username').focus();
+			})
+});
+
+
 
 // Text aut3o-focus on new_modal
 $(document).ready (function(){
