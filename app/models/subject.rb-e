@@ -19,7 +19,14 @@ class Subject < ActiveRecord::Base
 	scope :visible, lambda { where(:visible => true) }
 	scope :invisible, lambda { where(:visible => false) }
 	scope :sorted, lambda { order("subjects.position ASC") }
-	scope :search, lambda { |query|
-		where(["name LIKE ?", "%#{query}%"]) 
-	}
+	scope :search, lambda { |query| where(["name LIKE ?", "%#{query}%"]) }
+
+	def next
+    self.class.where("id > ?", id).order("id ASC").first
+  end
+
+  def prev
+    self.class.where("id < ?", id).order("id DESC").first
+  end
+
 end

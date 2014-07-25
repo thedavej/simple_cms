@@ -20,6 +20,14 @@
 							<span class="glyphicon glyphicon-chevron-left"></span> Back to Pages
 							<% end %>
 							
+							<%= link_to({:page_id => @page.prev}, :class => 'btn btn-default btn-sm'+ check_first_page ) do %>
+							<span class="glyphicon glyphicon-chevron-left"></span> Prev
+							<% end %>
+
+							
+							<%= link_to({:page_id => @page.next}, :class => 'btn btn-default btn-sm'+ check_last_page) do %> Next <span class="glyphicon glyphicon-chevron-right"></span> 
+							<% end %>
+
 							<%= link_to({:controller => 'public', :action => 'show',:permalink => @page.permalink}, :class => 'btn btn-default btn-sm') do %>
 							View Public Page <span class="glyphicon glyphicon-chevron-right"></span>
 							<% end %>

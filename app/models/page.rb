@@ -24,6 +24,14 @@ class Page < ActiveRecord::Base
 	scope :sub_sorted, lambda { order("pages.subject_id ASC") }
 	scope :newest_first, lambda { order("pages.created_at DESC") }
 
+  def next
+    subject.pages.where("id > ?", id).order("id ASC").first
+  end
+
+  def prev
+    subject.pages.where("id < ?", id).order("id DESC").first
+  end
+
   private
 
   def set_default_permalink
@@ -44,6 +52,5 @@ class Page < ActiveRecord::Base
   		# move them to another page?
   		# section.destroy
   end
-
 
 end

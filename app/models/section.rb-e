@@ -39,6 +39,14 @@ class Section < ActiveRecord::Base
  		end
  	end
 
+ 	def next
+    page.sections.where("id > ?", id).order("id ASC").first
+  end
+
+  def prev
+    page.sections.where("id < ?", id).order("id DESC").first
+  end
+
  	private
 
   def touch_subject_and_page
