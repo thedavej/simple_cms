@@ -7,11 +7,11 @@ class PagesController < ApplicationController
   def index
     if @subject
       @all_pages = false
-      @pages = @subject.pages.sorted.paginate(page: params[:page], per_page: 5)
+      @pages = @subject.pages.sorted.paginate(page: params[:page], per_page: 10)
     else
       @all_pages = true
       @pages = Page.all.sub_sorted
-      @pages = @pages.sorted.paginate(page: params[:page], per_page: 5)
+      @pages = @pages.sorted.paginate(page: params[:page], per_page: 10)
       @subject = Subject.first  
     end
   end

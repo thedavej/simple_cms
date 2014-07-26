@@ -24,10 +24,14 @@
 						<%= link_to({:subject_id => @subject.next}, :class => 'btn btn-default btn-sm'+ check_last_subject ) do %>
 							Next <span class="glyphicon glyphicon-chevron-right"></span> 
 						<% end %>
+
+						<%= link_to({:action => 'index'}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
+								<span class="glyphicon glyphicon-list-alt"></span> All Pages
+						<% end %>
 					</div>
 
 					<%= link_to({:action => 'new', :subject_id => @subject.id}, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
-								<span class="glyphicon glyphicon-file"></span> New Page
+							<span class="glyphicon glyphicon-file"></span> New Page
 					<% end %>
 						
 						<!-- Search Form -->
@@ -43,7 +47,7 @@
 						</div><!-- End Search  -->
 				</div><!-- End Panel-Body -->
 		  	<div class="table-responsive">
-					<table class ="table table-striped table-condensed" summary="Page list">
+					<table class ="table table-hover table-striped table-condensed" summary="Page list">
 						<thead>
 							<th>&nbsp;</th>
 							<th>Parent Subject</th>
@@ -56,18 +60,28 @@
 						<tbody>
 						<% @pages.each do |page| %>
 						<tr>
-							<td><%= page.position %></td>
-							<td><%= page.subject.name if page.subject %></td>
-							<td><%= page.name %></td>
-							<td class="center"><%= page.sections.size %></td>
-							<td class="center"><%= page.permalink %></td>
-							<td class="center"><%= status_tag(page.visible) %></td>
+							<td data-link="<%= view_sections_path(page.id) %>">>
+								<%= page.position %>
+							</td>
+							<td data-link="<%= view_sections_path(page.id) %>">>
+								<%= page.subject.name if page.subject %>
+							</td>
+							<td data-link="<%= view_sections_path(page.id) %>">>
+								<%= page.name %>
+							</td>
+							<td data-link="<%= view_sections_path(page.id) %>"> class="center">
+								<%= page.sections.size %>
+							</td>
+							<td data-link="<%= view_sections_path(page.id) %>"> class="center">
+								<%= page.permalink %>
+							</td>
+							<td data-link="<%= view_sections_path(page.id) %>"> class="center">
+								<%= status_tag(page.visible) %>
+							</td>
 							<td style="text-align: center;">
 									<div class="btn-group">
-								<%= link_to("View Sections", {:controller => 'sections', 
-									:page_id => page.id}, :class => 'btn btn-primary btn-xs') %>
-									<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-								      <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
+									<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+								      Actions <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
 								    </button>
 								    <ul class="dropdown-menu" role="menu">
 											<li class="dropdown-header"><%= page.name %></li>
