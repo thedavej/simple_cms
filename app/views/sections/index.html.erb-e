@@ -61,7 +61,7 @@
 								<th>Content Type</th>
 								<th>Visible</th>
 								<th></th>
-								<th class="col-md-2"></th>
+								<th></th>
 							</thead>
 							<tbody>
 							<% @sections.each_with_index do |section, i| %>
