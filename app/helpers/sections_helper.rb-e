@@ -1,7 +1,7 @@
 module SectionsHelper
 
 	def check_first_page
-		if (@page.id == @page.class.first.id) || @all_sect
+		if (@page.id == @page.subject.pages.first.id) || @all_sect
 			return " disabled"
 		else
 			return ""
@@ -9,7 +9,7 @@ module SectionsHelper
 	end
 
 	def check_last_page
-		if (@page.id == @page.class.last.id) || @all_sect
+		if (@page.id == @page.subject.pages.last.id) || @all_sect
 			return " disabled"
 		else
 			return ""
