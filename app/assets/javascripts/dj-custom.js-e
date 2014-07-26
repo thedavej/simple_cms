@@ -14,8 +14,6 @@ $('#sectionLoginModal').on('shown.bs.modal', function () {
 			})
 });
 
-
-
 // Text aut3o-focus on new_modal
 $(document).ready (function(){
 $('#new').on('shown.bs.modal', function () {
@@ -31,6 +29,12 @@ $('#edit').on('shown.bs.modal', function () {
 	   		$('#radio-specifications').tab('show'); }
 			})});
 
+// Clickable Table Rows in Admin area
+jQuery(function($) {
+$("td[data-link]").click(function() {
+window.location = this.dataset.link
+});
+})
 
 
 
