@@ -14,7 +14,7 @@ $('#sectionLoginModal').on('shown.bs.modal', function () {
 			})
 });
 
-// Text aut3o-focus on new_modal
+// Text auto-focus on new_modal
 $(document).ready (function(){
 $('#new').on('shown.bs.modal', function () {
 	    $('#new_name').focus();
@@ -31,9 +31,11 @@ $('#edit').on('shown.bs.modal', function () {
 
 // Clickable Table Rows in Admin area
 jQuery(function($) {
-$("td[data-link]").click(function() {
-window.location = this.dataset.link
-});
+	$("td[data-link]").click(function() {
+	window.location = this.dataset.link
+	});
+	$("td[data-link]").css('cursor','pointer');
+	
 })
 
 
