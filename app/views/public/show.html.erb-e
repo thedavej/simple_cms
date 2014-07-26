@@ -57,11 +57,12 @@
 							<% case section.content_type %>	
 								<% when 'Image' %>
 									<div class="col-xs-6">
-					        	<a id="section-<%= section.name %>">
-					        	<%= link_to(image_tag(section.image_url(:thumb), :class => 'image-responsive'), section.image_url, :class =>'thumbnail', :data => {:gallery => ''}) %>
-					        	<p class="caption">
-					        		<%= raw(section.content) %>
-					        	</p>
+					        	<div id="section-<%= section.name %>">
+						        	<%= link_to(image_tag(section.image_url(:thumb), :class => 'image-responsive'), section.image_url, :class =>'thumbnail', :data => {:gallery => ''}) %>
+						        	<p class="caption">
+						        		<%= raw(section.content) %>
+						        	</p>
+						        </div>
 				        	</div><!-- End Col -->
 			        	<% end %><!-- End Content Image Check -->
 		        	<% end  %><!-- End Loop -->
