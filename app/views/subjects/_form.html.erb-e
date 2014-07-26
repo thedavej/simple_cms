@@ -14,7 +14,7 @@
 	 	 		<%= f.label(:position) %>
  	 		</div>
  	 		<div class="col-md-2">
-	  		<%= f.select(:position, 1..@subject_count) %>
+	  		<%= f.select(:position, 1..@subject_count, :selected => @subject_count) %>
   		</div>
   		<div class="col-md-1">
   			<%= f.label(:visible) %>

@@ -21,7 +21,7 @@
 						<%= f.label(:position) %>
 					</div>
 					<div class="col-md-2">
-						<%= f.select(:position, 1..@page_count) %>
+						<%= f.select(:position, 1..@page_count, :selected => @page_count) %>
 					</div>
 					<div class="col-md-1">
 						<%= f.label(:visible) %>
