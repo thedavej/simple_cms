@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
  
-   # get 'demo/index'
-  #  root "demo#index"
+  # get 'demo/index'
+  # root "demo#index"
 
     root "public#index"
+
+    get 'pages/:subject_id', :to => "pages#index", as: 'view_pages'
+    get 'sections/:page_id', :to => "sections#index", as: 'view_sections'
+
+
     get 'admin', :to => "access#index"
-    get 'show/:permalink' , :to => 'public#show'
-    get 'show_new/:permalink' , :to => 'public#show_new'
-    get 'test', :to => "demo#index"
+    get 'vehicles/:permalink', :to =>  "public#show", as: 'view_public'
+    # get 'show/:permalink' , :to => 'public#show'
+  
+  # get 'show_new/:permalink' , :to => 'public#show_new'
+  # get 'test', :to => "demo#index"
   
   # This is the default route. Should go to the bottom!
   match ':controller(/:action(/:id))' , :via => [:get, :post]
