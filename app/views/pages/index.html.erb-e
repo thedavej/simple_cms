@@ -25,13 +25,13 @@
 							Next <span class="glyphicon glyphicon-chevron-right"></span> 
 						<% end %>
 
-						<%= link_to({:action => 'index'}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
+						<%= link_to({:action => 'index', :subject_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
 								<span class="glyphicon glyphicon-list-alt"></span> All Pages
 						<% end %>
 					</div>
 
-					<%= link_to({:action => 'new', :subject_id => @subject.id}, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
-							<span class="glyphicon glyphicon-file"></span> New Page
+					<%= link_to(new_page_url(:subject_id => @subject.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
+							<span class="glyphicon glyphicon-file"></span> New Page <%= params[:subject_id] %>
 					<% end %>
 						
 						<!-- Search Form -->
@@ -60,22 +60,22 @@
 						<tbody>
 						<% @pages.each do |page| %>
 						<tr>
-							<td data-link="<%= view_sections_path(page.id) %>">>
+							<td data-link="<%= view_sections_path(page.id) %>">
 								<%= page.position %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>">>
+							<td data-link="<%= view_sections_path(page.id) %>">
 								<%= page.subject.name if page.subject %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>">>
+							<td data-link="<%= view_sections_path(page.id) %>">
 								<%= page.name %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>"> class="center">
+							<td data-link="<%= view_sections_path(page.id) %>" class="center">
 								<%= page.sections.size %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>"> class="center">
+							<td data-link="<%= view_sections_path(page.id) %>" class="center">
 								<%= page.permalink %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>"> class="center">
+							<td data-link="<%= view_sections_path(page.id) %>" class="center">
 								<%= status_tag(page.visible) %>
 							</td>
 							<td style="text-align: center;">

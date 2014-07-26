@@ -27,7 +27,7 @@
 								Next <span class="glyphicon glyphicon-chevron-right"></span> 
 							<% end %>
 
-							<%= link_to({:action => 'index'}, :class => 'btn btn-default btn-sm'+ check_all_sections ) do %>
+							<%= link_to({:action => 'index', :page_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_sections ) do %>
 								<span class="glyphicon glyphicon-list-alt"></span> All Sections
 							<% end %>
 
@@ -36,7 +36,7 @@
 							<% end %>
 						</div>	
 						
-						<%= link_to({:action => 'new', :page_id => @page.id }, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
+						<%= link_to(new_section_url(:page_id => @page.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Section
 						<% end %>
 						<!-- Search Form -->
@@ -66,13 +66,26 @@
 							<tbody>
 							<% @sections.each_with_index do |section, i| %>
 								<% @last_edit= section.section_edits.last %>
-								<td><%= section.position %></td>
-								<td><%= @last_edit.editor.name %></td>
-								<td><%= @last_edit.updated_at.localtime.to_s(:abbrev) %></td>
-								<td><%= section.name %></td>
-								<td><%= section.content_type %></td>
-								<td><%= status_tag(section.visible) %></td>
-								<td></td>
+								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+									<%= section.position %>
+								</td>
+								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+									<%= @last_edit.editor.name %>
+								</td>
+								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+									<%= @last_edit.updated_at.localtime.to_s(:abbrev) %>
+								</td>
+								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+									<%= section.name %>
+								</td>
+								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+									<%= section.content_type %>
+								</td>
+								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+									<%= status_tag(section.visible) %>
+								</td>
+								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+								</td>
 								<td style="text-align: center;">
 									<div class="btn-group">
 										<% if i == 0  && !@all_sect %>
@@ -85,11 +98,9 @@
 								    </button>
 								    <ul class="dropdown-menu" role="menu">
 								    	<li class="dropdown-header"><%= section.name %></li>
-								    	<li><%= link_to("Show", {:action => 'show', :id => section.id,
-												:page_id => @page.id}, :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+								    	<li><%= link_to("Show", show_section_url(:id => section.id, :page_id => @page.id), :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
 								      </li>
-											<li><%= link_to("Edit", {:action => 'edit', :id => section.id,
-												:page_id => @page.id}, :class => '', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+											<li><%= link_to("Edit", edit_section_url(:id => section.id, :page_id => @page.id), :class => '', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
 								      </li>
 											<li><%= link_to("Delete", {:action => 'delete', :id => section.id,
 												:page_id => @page.id}, :class => '', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
