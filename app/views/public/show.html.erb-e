@@ -57,6 +57,7 @@
 							<% case section.content_type %>	
 								<% when 'Image' %>
 									<div class="col-xs-6">
+					        	<a id="section-<%= section.name %>">
 					        	<%= link_to(image_tag(section.image_url(:thumb), :class => 'image-responsive'), section.image_url, :class =>'thumbnail', :data => {:gallery => ''}) %>
 					        	<p class="caption">
 					        		<%= raw(section.content) %>
@@ -69,10 +70,12 @@
 
     		<div class="row">
 	    		<div class="tech-specs clearfix">
-	          <h3 class="aside-title">Specifications</h3>
 						<% @page.sections.visible.sorted.each do |section| %>
 							<% case section.content_type %>
 								<% when 'Specifications' %>
+									 <h3 id="section-<%= section.name %>" class="aside-title">
+			          	Specifications
+			          </h3>
 									<table class="table table-bordered table-striped">
 										<%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a', 'br', 'p', 'img', 'div','h1', 'h2', 'h3', 'h4', 'tr', 'th', 'td'])) %>
 									</table>
