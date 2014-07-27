@@ -141,6 +141,15 @@ aside h3 {
   /*background-color: #90928b;*/
   background-color: #ccc;
 }
+.table-hover > tbody > tr.danger > td {
+	background-color: #fff;
+	background-color: #f28989;
+}
+
+.table-hover > tbody > tr.danger:hover > td {
+	background-color: #f00;
+	color: #fff;
+}
 
 .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
   background-color: #428fca;

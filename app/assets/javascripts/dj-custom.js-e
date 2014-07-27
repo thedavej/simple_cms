@@ -36,7 +36,10 @@ jQuery(function($) {
 	});
 	$("td[data-link]").css('cursor','pointer');
 	
+	
 })
+
+	
 
 
 
