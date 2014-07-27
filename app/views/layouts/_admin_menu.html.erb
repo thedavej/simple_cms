@@ -16,11 +16,9 @@
 					  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Menu
               <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to("Manage Content", {:controller => 'subjects'}) %></li>
+                <li><%= link_to("Manage Content", view_subjects_url) %></li>
                 <li role="presentation" class="divider"></li>
                 <li><%= link_to("Manage Admin Users", {:controller => 'admin_users'}) %></li>
-                <li><%= link_to("Manage All Pages", {:controller => 'pages', :action => 'index'}) %></li>
-                <li><%= link_to("Manage All Sections", {:controller => 'sections',:action => 'index'}) %></li>
               </ul><!-- End Dropdown-menu -->
             </li>
 					</ul><!-- End Navbar-left -->

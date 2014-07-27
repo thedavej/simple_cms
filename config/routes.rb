@@ -5,17 +5,27 @@ Rails.application.routes.draw do
 
     root "public#index"
 
+    get 'subjects', :to => "subjects#index", as: 'view_subjects'
+    
+
     get 'pages/:subject_id', :to => "pages#index", as: 'view_pages'
     get 'pages/new/:subject_id', :to => "pages#new", as: 'new_page'
-    get 'pages/show/:subject_id', :to => "pages#show", as: 'show_page'
-    get 'pages/edit/:subject_id', :to => "pages#edit", as: 'edit_page'
-    get 'pages/delete/:subject_id', :to => "pages#delete", as: 'delete_page'
+    get 'pages/show/:subject_id/:page_id', :to => "pages#show", as: 'show_page'
+    get 'pages/edit/:subject_id/:page_id', :to => "pages#edit", as: 'edit_page'
+    get 'pages/delete/:subject_id/:page_id', :to => "pages#delete", as: 'delete_page'
 
-    get 'sections/:page_id', :to => "sections#index", as: 'view_sections'
-    get 'sections/new/:page_id', :to => "sections#new", as: 'new_section'
-    get 'sections/show/:page_id', :to => "sections#show", as: 'show_section'
-    get 'sections/edit/:page_id', :to => "sections#edit", as: 'edit_section'
-    get 'sections/delete/:page_id', :to => "sections#delete", as: 'delete_section'
+    get 'sections/:subject_id/:page_id', 
+      :to => "sections#index", as: 'view_sections'
+
+    get 'sections/new/:subject_id/:page_id', :to => "sections#new", as: 'new_section'
+    get 'sections/show/:subject_id/:page_id/:section_id', 
+      :to => "sections#show", as: 'show_section'
+
+    get 'sections/edit/:subject_id/:page_id/:section_id', 
+      :to => "sections#edit", as: 'edit_section'
+    
+    get 'sections/delete/:subject_id/:page_id/:section_id', 
+      :to => "sections#delete", as: 'delete_section'
     
 
     
