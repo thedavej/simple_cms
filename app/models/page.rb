@@ -32,6 +32,18 @@ class Page < ActiveRecord::Base
     subject.pages.where("id < ?", id).order("id DESC").first
   end
 
+  def next_subj
+    if subject.next
+      subject.next.pages.first
+    end
+  end
+
+  def prev_subj
+    if subject.prev
+      subject.prev.pages.first
+    end
+  end
+
   private
 
   def set_default_permalink

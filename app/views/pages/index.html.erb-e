@@ -18,11 +18,11 @@
 						<% end %>
 
 						<%= link_to({:subject_id => @subject.prev}, :class => 'btn btn-default btn-sm'+ check_first_subject ) do %>
-							<span class="glyphicon glyphicon-chevron-left"></span> Prev 
+							<span class="glyphicon glyphicon-chevron-left"></span> Prev Subject 
 						<% end %>
 
 						<%= link_to({:subject_id => @subject.next}, :class => 'btn btn-default btn-sm'+ check_last_subject ) do %>
-							Next <span class="glyphicon glyphicon-chevron-right"></span> 
+							Next Subject <span class="glyphicon glyphicon-chevron-right"></span> 
 						<% end %>
 
 						<%= link_to({:action => 'index', :subject_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
@@ -35,7 +35,7 @@
 					<% end %>
 						
 						<!-- Search Form -->
-						<div class="col-md-4 pull-right input-group" style="margin-right: 60px;">
+						<div class="col-md-2 pull-right input-group" style="margin-right: 60px;">
 						 	<%= form_for(:sections, :url => {:controller => 'sections', :action => 'index'}, :method => 'get') do %>
 							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
 							   <span class="input-group-btn">
@@ -47,52 +47,43 @@
 						</div><!-- End Search  -->
 				</div><!-- End Panel-Body -->
 		  	<div class="table-responsive">
-					<table class ="table table-hover table-striped table-condensed" summary="Page list">
+					<table class ="table table-hover table-striped table-bordered table-condensed" summary="Page list">
 						<thead>
-							<th>&nbsp;</th>
-							<th>Parent Subject</th>
-							<th>Page Name</th>
-							<th>Child Sections</th>
-							<th>Permalink</th>
-							<th>Visible</th>
-							<th></th>
+							<th class="text-center col-md-1">&nbsp;</th>
+							<th class="text-center">Parent Subject</th>
+							<th class="text-center">Page Name</th>
+							<th class="text-center">Child Sections</th>
+							<th class="text-center">Permalink</th>
+							<th class="text-center">Visible</th>
+							<th class ="text-center col-md-2">Actions</th>
 						</thead>
 						<tbody>
 						<% @pages.each do |page| %>
-						<tr>
-							<td data-link="<%= view_sections_path(page.id) %>">
+						<tr class="text-center <%= check_inactive(page) %> ">
+							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
 								<%= page.position %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>">
+							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
 								<%= page.subject.name if page.subject %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>">
+							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
 								<%= page.name %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>" class="center">
+							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
 								<%= page.sections.size %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>" class="center">
+							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
 								<%= page.permalink %>
 							</td>
-							<td data-link="<%= view_sections_path(page.id) %>" class="center">
+							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
 								<%= status_tag(page.visible) %>
 							</td>
 							<td style="text-align: center;">
 									<div class="btn-group">
-									<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-								      Actions <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
-								    </button>
-								    <ul class="dropdown-menu" role="menu">
-											<li class="dropdown-header"><%= page.name %></li>
-											<li><%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
-											</li>
-											<li><%= link_to("Edit", {:action => 'edit', :id => page.id, 
-												:subject_id => @subject.id}, :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
-											</li>
-											<li><%= link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
-											</li>
-										</ul>
+										<%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+											<%= link_to("Edit", {:action => 'edit', :id => page.id, 
+												:subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+										<%= link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
 									</div>
 							</td>
 						</tr>

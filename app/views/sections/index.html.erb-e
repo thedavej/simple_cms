@@ -10,13 +10,14 @@
 							<% else %>
 								<h2><%= @page.name %> | Sections</h2>
 						<% end %>
-					</div><!-- End Panel-Heading -->
-					<div class="panel-body">
-						
-						<div class="clearfix"></div>
-						<div class="btn-group pull-left">
+
+					 <div class="btn-group pull-left">
 							<%= link_to({:controller => 'pages',:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') do %>
-								<span class="glyphicon glyphicon-chevron-left"></span> Back to Pages
+								<span ="glyphicon glyphicon-chevron-left"></span> Back to Pages
+							<% end %>
+
+							<%= link_to({:subject_id => @page.subject.prev, :page_id => @page.prev_subj}, :class => 'btn btn-default btn-sm'+ check_first_subj ) do %>
+							<span class="glyphicon glyphicon-chevron-left"></span> Prev Subject
 							<% end %>
 							
 							<%= link_to({:page_id => @page.prev}, :class => 'btn btn-default btn-sm'+ check_first_page ) do %>
@@ -25,6 +26,10 @@
 							
 							<%= link_to({:page_id => @page.next}, :class => 'btn btn-default btn-sm'+ check_last_page) do %> 
 								Next <span class="glyphicon glyphicon-chevron-right"></span> 
+							<% end %>
+
+							<%= link_to({:subject_id => @page.subject.next, :page_id => @page.next_subj}, :class => 'btn btn-default btn-sm'+ check_last_subj ) do %>
+								Next Subject <span class="glyphicon glyphicon-chevron-right"></span> 
 							<% end %>
 
 							<%= link_to({:action => 'index', :page_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_sections ) do %>
@@ -39,8 +44,9 @@
 						<%= link_to(new_section_url(:page_id => @page.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Section
 						<% end %>
+						
 						<!-- Search Form -->
-						<div class="col-md-4 pull-right input-group" style="margin-right: 60px;">
+						<div class="col-md-2 pull-right input-group" style="margin-right: 60px;">
 						 	<%= form_for(:section, :method => 'get') do %>
 							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
 							   <span class="input-group-btn">
@@ -50,64 +56,72 @@
 									</span>
 							<% end %>
 						</div><!-- End Search  -->
+
+					</div><!-- End Panel-Heading -->
+					<div class="panel-body">
+						
+						<div class="clearfix"></div>
+						
+
 					</div><!-- End Panel-Body -->
-					<div class="table-responsive">
-						<table class="table table-hover table-bordered table-striped table-condensed" summary="Section list">
-							<thead>
-								<th>&nbsp;</th>
-								<th>Last Edited By</th>
-								<th>Last Update</th>
-								<th>Section Name</th>
-								<th>Content Type</th>
-								<th>Visible</th>
-								<th></th>
-								<th></th>
-							</thead>
-							<tbody>
-							<% @sections.each_with_index do |section, i| %>
-								<% @last_edit= section.section_edits.last %>
-								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
-									<%= section.position %>
-								</td>
-								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
-									<%= @last_edit.editor.name %>
-								</td>
-								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
-									<%= @last_edit.updated_at.localtime.to_s(:abbrev) %>
-								</td>
-								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
-									<%= section.name %>
-								</td>
-								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
-									<%= section.content_type %>
-								</td>
-								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
-									<%= status_tag(section.visible) %>
-								</td>
-								<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
-								</td>
-								<td style="text-align: center;">
-									<div class="btn-group">
-										<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-								      Actions <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
-								    </button>
-								    <ul class="dropdown-menu" role="menu">
-								    	<li class="dropdown-header"><%= section.name %></li>
-								    	<li><%= link_to("Show", show_section_url(:id => section.id, :page_id => @page.id), :class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
-								      </li>
-											<li><%= link_to("Edit", edit_section_url(:id => section.id, :page_id => @page.id), :class => '', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
-								      </li>
-											<li><%= link_to("Delete", {:action => 'delete', :id => section.id,
-												:page_id => @page.id}, :class => '', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
-								      </li>
-								    </ul>
-								  </div>
-								</td>
-							</tr>
-							<% end %>
-							</tbody>
-						</table>
-					</div><!-- End Table-Responsive -->
+					<ul class="nav nav-tabs">
+              <li class="active"><a href="#tab1" data-toggle="tab">Tab 1</a></li>
+              <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
+	          </ul>
+					<div class="tab-content">
+						<div class="tab-pane table-responsive" id="tab1">
+							<table class="table table-bordered table-hover table-striped table-condensed" summary="Section list">
+								<thead>
+									<tr>
+										<th class="text-center col-md-1">&nbsp;</th>
+										<th class="text-center">Section Name</th>
+										<th class="text-center">Content Type</th>
+										<th class="text-center">Visible</th>
+										<th class="text-center">Last Edited By</th>
+										<th class="text-center">Last Update</th>
+										<th class ="text-center col-md-2">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+								<% @sections.each_with_index do |section, i| %>
+									<tr class="text-center <%= check_inactive(section) %> ">
+										<% @last_edit= section.section_edits.last %>
+										<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+											<%= section.position %>
+										</td>
+										<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+											<%= section.name %>
+										</td>
+										<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+											<%= section.content_type %>
+										</td>
+										<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+											<%= status_tag(section.visible) %>
+										</td>
+										<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+											<%= @last_edit.editor.name %>
+										</td>
+										<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+											<%= @last_edit.updated_at.localtime.to_s(:abbrev) %>
+										</td>
+										
+										<td style ="text-align: center;">
+											<div class="btn-group">
+												<%= link_to("Show", show_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+												<%= link_to("Edit", edit_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+												<%= link_to("Delete", delete_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
+												
+										  </div>
+										</td>
+									</tr>
+								<% end %>
+								</tbody>
+							</table>
+						</div><!-- End Table-Responsive and Tab 1-->
+						<div class="tab-content" id="tab2">
+							<h2>Hello World</h2>
+						</div>
+					</div> <!-- End Tab Content -->
 					<div class="panel-footer">
 						<p><%= pluralize(@sections.total_entries, 'section') %> found</p>
 						 <div class="pull-right">

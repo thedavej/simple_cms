@@ -15,8 +15,9 @@
 						<%= link_to({:action => 'new'}, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 								<span class="glyphicon glyphicon-file"></span> New Vehicle
 						<% end %>
+
 						<!-- Search Form -->
-						<div class="col-md-4 pull-right input-group" style="margin-right: 60px;">
+						<div class="col-md-2 pull-right input-group" style="margin-right: 60px;">
 						 	<%= form_for(:sections, :url => {:controller => 'sections', :action => 'index'}, :method => 'get') do %>
 							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
 							   <span class="input-group-btn">
@@ -27,20 +28,20 @@
 							<% end %>
 						</div><!-- End Search  -->
 					</div><!-- End Panel-Body -->
-					<div class="table-responsive">
-						<table class ="table table-hover table-striped table-condensed" summary="Subject list">
+					<div class="">
+						<table class ="table table-hover table-striped table-bordered table-condensed" summary="Subject list">
 							<thead>
-								<th class="">&nbsp;</th>
-								<th class="">Subject</th>
-								<th class=""> Pages</th>
-								<th class="">Status</th>
+								<th class="text-center col-md-1">&nbsp;</th>
+								<th class="text-center">Subject</th>
+								<th class="text-center"> Pages</th>
+								<th class="text-center">Status</th>
 								<th></th>
 								<th></th>
-								<th class="col-md-2"></th>
+								<th class ="text-center col-md-2">Actions</th>
 							</thead>
 							<tbody>
 							<% @subjects.each do |subject| %>
-							<tr>
+							<tr class="text-center <%= check_inactive(subject) %> ">
 								<td data-link="<%= view_pages_path(subject.id) %>">
 									<%= subject.position %>
 								</td>
@@ -57,16 +58,9 @@
 								<td data-link="<%= view_pages_path(subject.id) %>"></td>
 								<td style="text-align: center;">
 									<div class="btn-group">
-								    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-								       Actions <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
-								    </button>
-								    <ul class="dropdown-menu" role="menu">
-								    	<li class="dropdown-header"><%= subject.name %></li>
-								      <li><%= link_to("Show", {:action => 'show', :id => subject.id},:class => '', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
-								      </li>
-								      <li><%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => '', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %></li>
-								      <li><%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => '', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %></li>
-								    </ul>
+								    <%= link_to("Show", {:action => 'show', :id => subject.id},:class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+								    <%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+								    <%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
 								  </div>
 								</td>
 							</tr>
