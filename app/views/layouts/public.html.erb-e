@@ -16,7 +16,7 @@
 	  <%= stylesheet_link_tag('application', :media => 'all') %>
 
 		<!-- Blueimp Gallery -->
-	  <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+	 <!--  <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css"> -->
 	 	
 	 	<!-- Rails Javascript -->
 	 	<%= javascript_include_tag('application') %>
