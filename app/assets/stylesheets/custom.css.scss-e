@@ -162,13 +162,13 @@ aside h3 {
   background-image: none;
 }
 
-.pagination {
+/*.pagination {
   .previous_page { background:#7777ff; color:white }
   .previous_page.disabled { background: white; color: #777 }
   .current { background: yellow }
   .next_page { background: #7777ff; color: white }
   .next_page.disabled { background: white; color: #777 }
-}
+}*/
 
 .editor {
 	font-style: italic;
@@ -201,3 +201,4 @@ aside h3 {
 	bottom: 0;
 	width: 100%;
 }
+
