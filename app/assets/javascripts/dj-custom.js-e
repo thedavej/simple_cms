@@ -77,3 +77,4 @@ function addField(tableid)
  table.appendChild(row);
  
 }
+
