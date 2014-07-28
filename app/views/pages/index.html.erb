@@ -10,11 +10,9 @@
 					<% else %>
 						<h2><%= @subject.name %></h2>
 					<% end %>
-				</div><!-- End Panel-Heading -->
-				<div class="panel-body">
 					<div class="btn-group pull-left">
 						<%= link_to({:controller => 'subjects', :action => 'index'}, :class => 'btn btn-default btn-sm') do %>
-							<span class="glyphicon glyphicon-chevron-left"></span> Back to Subjects
+								<span class="glyphicon glyphicon-chevron-left"></span> Back to Subjects
 						<% end %>
 
 						<%= link_to({:subject_id => @subject.prev}, :class => 'btn btn-default btn-sm'+ check_first_subject ) do %>
@@ -28,7 +26,7 @@
 						<%= link_to({:action => 'index', :subject_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
 								<span class="glyphicon glyphicon-list-alt"></span> All Pages
 						<% end %>
-					</div>
+					</div><!-- End Btn-Group -->
 
 					<%= link_to(new_page_url(:subject_id => @subject.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 							<span class="glyphicon glyphicon-file"></span> New Page <%= params[:subject_id] %>
@@ -45,6 +43,11 @@
 									</span>
 							<% end %>
 						</div><!-- End Search  -->
+						<div class="clearfix"></div>
+				</div><!-- End Panel-Heading -->
+				<div class="panel-body">
+					
+						
 				</div><!-- End Panel-Body -->
 		  	<div class="table-responsive">
 					<table class ="table table-hover table-striped table-bordered table-condensed" summary="Page list">
