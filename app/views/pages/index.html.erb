@@ -29,7 +29,7 @@
 					</div><!-- End Btn-Group -->
 
 					<%= link_to(new_page_url(:subject_id => @subject.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
-							<span class="glyphicon glyphicon-file"></span> New Page <%= params[:subject_id] %>
+							<span class="glyphicon glyphicon-file"></span> New Page
 					<% end %>
 						
 						<!-- Search Form -->
@@ -46,56 +46,56 @@
 						<div class="clearfix"></div>
 				</div><!-- End Panel-Heading -->
 				<div class="panel-body">
-					
-						
+					<div class="table-responsive">
+						<table class ="table table-hover table-striped table-bordered table-condensed" summary="Page list">
+							<thead>
+								<th class="text-center col-md-1">&nbsp;</th>
+								<th class="text-center">Parent Subject</th>
+								<th class="text-center">Page Name</th>
+								<th class="text-center">Child Sections</th>
+								<th class="text-center">Permalink</th>
+								<th class="text-center">Visible</th>
+								<th class ="text-center col-md-2">Actions</th>
+							</thead>
+							<tbody>
+								<% @pages.each do |page| %>
+								<tr class="text-center <%= check_inactive(page) %> ">
+									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
+										<%= page.position %>
+									</td>
+									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
+										<%= page.subject.name if page.subject %>
+									</td>
+									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
+										<%= page.name %>
+									</td>
+									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
+										<%= page.sections.size %>
+									</td>
+									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
+										<%= page.permalink %>
+									</td>
+									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
+										<%= status_tag(page.visible) %>
+									</td>
+									<td style="text-align: center;">
+											<div class="btn-group">
+												<%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+													<%= link_to("Edit", {:action => 'edit', :id => page.id, 
+														:subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+												<%= link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
+											</div>
+									</td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div><!-- End Table-Responsive -->
 				</div><!-- End Panel-Body -->
-		  	<div class="table-responsive">
-					<table class ="table table-hover table-striped table-bordered table-condensed" summary="Page list">
-						<thead>
-							<th class="text-center col-md-1">&nbsp;</th>
-							<th class="text-center">Parent Subject</th>
-							<th class="text-center">Page Name</th>
-							<th class="text-center">Child Sections</th>
-							<th class="text-center">Permalink</th>
-							<th class="text-center">Visible</th>
-							<th class ="text-center col-md-2">Actions</th>
-						</thead>
-						<tbody>
-						<% @pages.each do |page| %>
-						<tr class="text-center <%= check_inactive(page) %> ">
-							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
-								<%= page.position %>
-							</td>
-							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
-								<%= page.subject.name if page.subject %>
-							</td>
-							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>">
-								<%= page.name %>
-							</td>
-							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
-								<%= page.sections.size %>
-							</td>
-							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
-								<%= page.permalink %>
-							</td>
-							<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
-								<%= status_tag(page.visible) %>
-							</td>
-							<td style="text-align: center;">
-									<div class="btn-group">
-										<%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
-											<%= link_to("Edit", {:action => 'edit', :id => page.id, 
-												:subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
-										<%= link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
-									</div>
-							</td>
-						</tr>
-						<% end %>
-					</tbody>
-					</table>
-				</div><!-- End Table-Responsive -->
 				<div class="panel-footer">
-					<p><%= pluralize(@pages.size, 'page') %> found</p>
+					<div class="page_info">
+      			<%= page_entries_info @pages %>
+					</div>
 					<div class="pull-right">
 						<%= will_paginate @collection, renderer: BootstrapPagination::Rails, :previous_label => '<span class="glyphicon glyphicon-chevron-left"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right"></span>' %>
 					</div><!-- End Pagination -->
