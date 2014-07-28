@@ -18,5 +18,6 @@
 //= require jquery_ujs
 //= require dj-custom.js
 //= require bootstrap-image-gallery.min.js
+//= require jquery.blueimp-gallery.min.js
 //= require bootstrap
 //= require_tree .
