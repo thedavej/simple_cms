@@ -13,7 +13,7 @@
 
 					 <div class="btn-group pull-left">
 							<%= link_to({:controller => 'pages',:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') do %>
-								<span ="glyphicon glyphicon-chevron-left"></span> Back to Pages
+								<span class="glyphicon glyphicon-chevron-left"></span> Back to Pages
 							<% end %>
 
 							<%= link_to({:subject_id => @page.subject.prev, :page_id => @page.prev_subj}, :class => 'btn btn-default btn-sm'+ check_first_subj ) do %>

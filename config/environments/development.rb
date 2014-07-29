@@ -6,6 +6,12 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Pointing to Bootstrap Fonts
+  config.assets.precompile += %w( .svg .eot .woff .ttf );
+
+  # Add fonts to asset pipeline
+  config.assets.paths << "#{Rails}/vendor/assets/fonts"
+
   # Do not eager load code on boot.
   config.eager_load = false
 
