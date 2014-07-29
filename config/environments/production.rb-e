@@ -4,7 +4,8 @@ Rails.application.configure do
   # Pointing to Bootstrap Fonts
   config.assets.precompile += %w( .svg .eot .woff .ttf );
 
-
+  # Add fonts to asset pipeline
+  config.assets.paths << "#{Rails}/vendor/assets/fonts"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
