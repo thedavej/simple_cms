@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module SimpleCms
   class Application < Rails::Application
+    # Add fonts to asset piplein
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -20,6 +23,5 @@ module SimpleCms
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end
