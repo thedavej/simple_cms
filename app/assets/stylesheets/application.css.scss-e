@@ -12,7 +12,8 @@
  *  
  *= require_self
  *= require custom.css.scss
- *= require gallery.css.scss
+ *= require blueimp-gallery.min.css
+ *= require bootstrap-image-gallery.min.css
  */
 @import "bootstrap";
 @import "bootstrap/theme";

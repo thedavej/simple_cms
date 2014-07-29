@@ -13,7 +13,7 @@
 				 	<ul class="nav navbar-nav">
 						<li class="<%= check_home %>"><%= link_to("Home", {:action => 'index'}) %></li>
 							
-							<% @subjects.each do |subject| %>
+							<% @subjects.visible.each do |subject| %>
 								<li class="dropdown<%= check_subject(subject) %>">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= subject.name %><span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
