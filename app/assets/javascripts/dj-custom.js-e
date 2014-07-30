@@ -29,6 +29,23 @@ $('#edit').on('shown.bs.modal', function () {
 	   		$('#radio-specifications').tab('show'); }
 			})});
 
+// Refresh page after modal close
+$(document).ready (function(){
+	$('#new').on('hidden.bs.modal', function () {
+		location.reload(true);
+	})
+	$('#show').on('hidden.bs.modal', function () {
+		location.reload(true);
+	})
+	$('#edit').on('hidden.bs.modal', function () {
+		location.reload(true);
+	})
+	$('#delete').on('hidden.bs.modal', function () {
+		location.reload(true);
+	})
+});
+
+
 // Clickable Table Rows in Admin area
 jQuery(function($) {
 	$("td[data-link]").click(function() {
