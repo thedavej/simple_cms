@@ -68,7 +68,7 @@ class SectionsController < ApplicationController
   end
 
   def update
-    @section = Section.find(params[:id])
+    @section = Section.find(params[:section_id])
     @editor = AdminUser.find(session[:user_id])
     if @section.update_attributes(sections_params)
       @time = @section.updated_at.to_s

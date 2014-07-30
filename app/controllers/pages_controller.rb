@@ -23,7 +23,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:page_id])
     render action: "show_modal", layout: "crud_modal"
   end
 
@@ -48,14 +48,14 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:page_id])
     @subjects = Subject.order('position ASC')
     @page_count = @subject.pages.count
     render action: "edit_modal", layout: "crud_modal"
   end
 
   def update
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:page_id])
     if @page.update_attributes(pages_params)
       @page.editors << AdminUser.find(session[:user_id])
       flash[:success] = "Page updated successfully"
@@ -68,12 +68,12 @@ class PagesController < ApplicationController
   end
 
   def delete
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:page_id])
     render action: "delete_modal", layout: "crud_modal"
   end
 
   def destroy
-    page = Page.find(params[:id]).destroy
+    page = Page.find(params[:page_id]).destroy
     flash[:danger] = "Page 'page.name' was destroyed successfully"
     redirect_to(:action => 'index', :subject_id => @subject.id)
   end

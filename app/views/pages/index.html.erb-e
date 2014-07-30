@@ -75,10 +75,9 @@
 									</td>
 									<td style="text-align: center;">
 											<div class="btn-group">
-												<%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
-													<%= link_to("Edit", {:action => 'edit', :id => page.id, 
-														:subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
-												<%= link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
+												<%= link_to("Show", show_page_url(@subject.id, page.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+													<%= link_to("Edit", edit_page_url(@subject.id, page.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+												<%= link_to("Delete", delete_page_url(@subject.id, page.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
 											</div>
 									</td>
 								</tr>

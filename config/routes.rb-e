@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     get 'pages/new/:subject_id', :to => "pages#new", as: 'new_page'
     get 'pages/show/:subject_id/:page_id', :to => "pages#show", as: 'show_page'
     get 'pages/edit/:subject_id/:page_id', :to => "pages#edit", as: 'edit_page'
-    get 'pages/delete/:subject_id/:page_id', :to => "pages#delete", as: 'delete_page'
+    get 'pages/delete/:subject_id/:page_id', 
+        :to => "pages#delete", as: 'delete_page'
 
     get 'sections/:subject_id/:page_id', 
       :to => "sections#index", as: 'view_sections'
