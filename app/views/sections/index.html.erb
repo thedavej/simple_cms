@@ -7,6 +7,8 @@
 					<div class="panel-heading">
 						<% if @all_sect %>
 							<h2>All Sections</h2>
+							<% elsif !@page.visible %>
+								<h2><%= @page.name %> | <span class="inactive">[This Page is Not Active]</span></h2>
 							<% else %>
 								<h2><%= @page.name %> | Sections</h2>
 						<% end %>

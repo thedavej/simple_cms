@@ -11,11 +11,15 @@
 					</p>
 					<% if session[:username] %>
 						<p>
-							<%= link_to('Edit Page', {:controller => 'sections', 
-			            :page_id => @page.id}, :class => 'btn btn-primary btn-lg') %>
+							<%= link_to({:controller => 'sections', 
+			            :page_id => @page.id}, :class => 'btn btn-primary btn-lg') do %>
+									<span class="glyphicon glyphicon-edit"></span> Edit Page
+
+			            <% end %>
 						</p>
 					<% else %>
-						<a href="#sectionLoginModal" role="button" class="btn btn-primary btn-lg" data-toggle="modal">Edit Page</a>
+						<a href="#sectionLoginModal" role="button" class="btn btn-primary btn-lg" data-toggle="modal">
+							<span class="glyphicon glyphicon-edit"></span> Edit Page</a>
 					<% end %>
 				</div>
 		<% end %><!-- End Content Jumbotron Check -->
