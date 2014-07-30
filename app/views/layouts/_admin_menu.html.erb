@@ -10,7 +10,7 @@
 					<span class="navbar-brand">AVDB Admin</span>
 				</div>
 				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav navbar-left">
 						<li><%= link_to("Home", {:controller => 'access', :action => 'index'}) %></li>
 				  	<li class="dropdown">
 					  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Menu
@@ -41,6 +41,20 @@
 							
 							<% end %>
       		</ul>
+      		<div class="nav navbar-nav"></div>
+	      		<div class="col-sm-3 col-md-3 pull-right">
+				    	<%= form_for :sections, :method => 'get', :url => {:controller => 'sections', :action => 'index', :page_id => nil} , :html => { :class => 'navbar-form' } do %>
+							  <div class="input-group pull-right">
+						    	<%= text_field_tag :search, nil, :placeholder => "Search", :class => "form-control" %>
+			   		  	 	<span class="input-group-btn">
+					   				<%= button_tag(type: 'submit', class: 'btn btn btn-default', name: nil) do %>
+										<span class="glyphicon glyphicon-search"></span>
+								 		<% end %>
+									</span>
+								</div><!-- /input-group -->
+							<% end %> 
+						</div><!-- End Col -->
+					</div><!-- End Header -->
 	     	</div><!-- .navbar collapse -->
 			</div><!-- Container -->
 		</nav><!-- Navbar -->

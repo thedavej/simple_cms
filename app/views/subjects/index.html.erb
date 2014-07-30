@@ -2,32 +2,25 @@
 
 	<div class="container clearfix">
 		<div class="row">
-		  <div class="col-md-12">
+		  <div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h2>Subjects</h2>
-						<div class="btn-group">
-							<%= link_to({:controller => 'access', :action => 'index'}, :class => 'btn btn-default btn-sm') do %>
-							<span class="glyphicon glyphicon-chevron-left"></span> Back to Main Menu
-							<% end %>
-						</div>
 						
-							<%= link_to({:action => 'new'}, :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
+						<div class="row">
+							<div class="col-xs-10">
+								<div class="btn-group">
+									<%= link_to({:controller => 'access', :action => 'index'}, :class => 'btn btn-default btn-sm pull-left') do %>
+									<span class="glyphicon glyphicon-chevron-left"></span> Back to Main Menu
+									<% end %>
+								</div>
+							</div><!-- End Col -->
+							<div class="col-xs-2">
+								<%= link_to({:action => 'new'}, :class => 'pull-right btn btn-success btn-sm', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 									<span class="glyphicon glyphicon-file"></span> New Subject
-							<% end %>
-
-						<!-- Search Form -->
-						<div class="col-md-2 pull-right input-group" style="margin-right: 60px;">
-						 	<%= form_for(:sections, :url => {:controller => 'sections', :action => 'index'}, :method => 'get') do %>
-							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
-							   <span class="input-group-btn">
-							  	<%= button_tag(type: 'submit', class: 'btn btn-default', name: nil) do %>
-									 <span class="glyphicon glyphicon-search"></span>
-									 <% end %>
-									</span>
-							<% end %>
-						</div><!-- End Search  -->
-						<div class="clearfix"></div>
+								<% end %>
+							</div><!-- End Col -->
+						</div><!-- End Row -->	
 					</div><!-- End Panel-Heading -->
 					<div class="panel-body">
 						<div class="table responsive">

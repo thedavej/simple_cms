@@ -2,7 +2,7 @@
 
 <div class="container clearfix">
 	<div class="row">
-	  <div class="col-md-12">
+	  <div class="col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<% if @all_pages %>
@@ -10,40 +10,33 @@
 					<% else %>
 						<h2><%= @subject.name %></h2>
 					<% end %>
-					<div class="btn-group pull-left">
-						<%= link_to({:controller => 'subjects', :action => 'index'}, :class => 'btn btn-default btn-sm') do %>
-								<span class="glyphicon glyphicon-chevron-left"></span> Back to Subjects
-						<% end %>
 
-						<%= link_to({:subject_id => @subject.prev}, :class => 'btn btn-default btn-sm'+ check_first_subject ) do %>
-							<span class="glyphicon glyphicon-chevron-left"></span> Prev Subject 
-						<% end %>
+					<div class="row">
+							<div class="col-xs-10">
+								<div class="btn-group">
+									<%= link_to({:controller => 'subjects', :action => 'index'}, :class => 'btn btn-default btn-sm') do %>
+										<span class="glyphicon glyphicon-chevron-left"></span> Back to Subjects
+									<% end %>
+									<%= link_to({:subject_id => @subject.prev}, :class => 'btn btn-default btn-sm'+ check_first_subject ) do %>
+										<span class="glyphicon glyphicon-chevron-left"></span> Subject 
+									<% end %>
 
-						<%= link_to({:subject_id => @subject.next}, :class => 'btn btn-default btn-sm'+ check_last_subject ) do %>
-							Next Subject <span class="glyphicon glyphicon-chevron-right"></span> 
-						<% end %>
+									<%= link_to({:subject_id => @subject.next}, :class => 'btn btn-default btn-sm'+ check_last_subject ) do %>
+										Subject <span class="glyphicon glyphicon-chevron-right"></span> 
+									<% end %>
 
-						<%= link_to({:action => 'index', :subject_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
-								<span class="glyphicon glyphicon-list-alt"></span> All Pages
-						<% end %>
-					</div><!-- End Btn-Group -->
-
-					<%= link_to(new_page_url(:subject_id => @subject.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
-							<span class="glyphicon glyphicon-file"></span> New Page
-					<% end %>
-						
-						<!-- Search Form -->
-						<div class="col-md-2 pull-right input-group" style="margin-right: 60px;">
-						 	<%= form_for(:sections, :url => {:controller => 'sections', :action => 'index'}, :method => 'get') do %>
-							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
-							   <span class="input-group-btn">
-							  	<%= button_tag(type: 'submit', class: 'btn btn-default', name: nil) do %>
-									 <span class="glyphicon glyphicon-search"></span>
-									 <% end %>
-									</span>
-							<% end %>
-						</div><!-- End Search  -->
-						<div class="clearfix"></div>
+									<%= link_to({:action => 'index', :subject_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
+											<span class="glyphicon glyphicon-list-alt"></span> All Pages
+									<% end %>
+								</div>
+							</div><!-- End Col -->
+							
+							<div class="col-xs-2">
+								<%= link_to(new_page_url(:subject_id => @subject.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
+										<span class="glyphicon glyphicon-file"></span> New Page
+								<% end %>
+							</div><!-- End Col -->
+						</div><!-- End Row -->	
 				</div><!-- End Panel-Heading -->
 				<div class="panel-body">
 					<div class="table-responsive">

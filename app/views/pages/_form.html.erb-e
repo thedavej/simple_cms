@@ -2,40 +2,40 @@
 
 
 				<div class="form-group row">
-					<div class="col-md-2">
+					<div class="col-xs-2">
 						<%= f.label(:name) %>
 					</div>
-					<div class="col-md-6">
+					<div class="col-xs-6">
 						<%= f.text_field(:name, :id => 'new_name',  :class => 'form-control', :placeholder => 'Name') %>
 					</div>
 				</div><!-- End Row 1 -->
 				<div class="form-group row">
-					<div class="col-md-2">
+					<div class="col-xs-2">
 						<%= f.label(:subject_id, 'Subject') %>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<%= f.select(:subject_id, @subjects.map { |s| [s.name, s.id] }) %>
 					</div>
 
-					<div class="col-md-2">
+					<div class="col-xs-2">
 						<%= f.label(:position) %>
 					</div>
-					<div class="col-md-2">
+					<div class="col-xs-2">
 						<%= f.select(:position, 1..@page_count, @page.position ? nil : :selected => @page_count ) %>
 						
 					</div>
-					<div class="col-md-1">
+					<div class="col-xs-1">
 						<%= f.label(:visible) %>
 					</div>
-					<div class="col-md-1">
+					<div class="col-xs-1">
 						<%= f.check_box(:visible) %>
 					</div>
 				</div><!-- End Row 2 -->
 				<div class="form-group row">
-					<div class="col-md-2">
+					<div class="col-xs-2">
 						<%= f.label(:permalink) %>
 					</div>
-					<div class="col-md-5">
+					<div class="col-xs-5">
 						<%= f.text_field(:permalink, :class => 'form-control') %>
 					</div>
 				</div>

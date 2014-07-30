@@ -2,7 +2,7 @@
 
 <div class="container clearfix">
 		<div class="row">
-		  <div class="col-md-12">
+		  <div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<% if @all_sect %>
@@ -10,62 +10,53 @@
 							<% else %>
 								<h2><%= @page.name %> | Sections</h2>
 						<% end %>
+		
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="btn-group">
+									<%= link_to({:controller => 'pages',:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') do %>
+										<span class="glyphicon glyphicon-chevron-left"></span> Back to Pages
+									<% end %>
+									<%= link_to({:subject_id => @page.subject.prev, :page_id => @page.prev_subj}, :class => 'btn btn-default btn-sm'+ check_first_subj ) do %>
+										<span class="glyphicon glyphicon-chevron-left"></span> Subject
+									<% end %>
 
-					 <div class="btn-group pull-left">
-							<%= link_to({:controller => 'pages',:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') do %>
-								<span class="glyphicon glyphicon-chevron-left"></span> Back to Pages
-							<% end %>
-
-							<%= link_to({:subject_id => @page.subject.prev, :page_id => @page.prev_subj}, :class => 'btn btn-default btn-sm'+ check_first_subj ) do %>
-							<span class="glyphicon glyphicon-chevron-left"></span> Prev Subject
-							<% end %>
+									<%= link_to({:subject_id => @page.subject.next, :page_id => @page.next_subj}, :class => 'btn btn-default btn-sm'+ check_last_subj ) do %>
+										Subject <span class="glyphicon glyphicon-chevron-right"></span> 
+									<% end %>
+								
+									<%= link_to({:page_id => @page.prev}, :class => 'btn btn-default btn-sm'+ check_first_page ) do %>
+										<span class="glyphicon glyphicon-chevron-left"></span> Prev
+									<% end %>
+									
+									<%= link_to({:page_id => @page.next}, :class => 'btn btn-default btn-sm'+ check_last_page) do %> 
+										Next <span class="glyphicon glyphicon-chevron-right"></span> 
+									<% end %>
+								</div><!-- End Btn-Group -->
+							</div><!-- End Col -->
+						</div><!-- End Row -->
 							
-							<%= link_to({:page_id => @page.prev}, :class => 'btn btn-default btn-sm'+ check_first_page ) do %>
-								<span class="glyphicon glyphicon-chevron-left"></span> Prev
-							<% end %>
+							<div class="row">
+								<div class="col-xs-10">
+									<div class="btn-group">
+										<%= link_to({:action => 'index', :subject_id => nil, :page_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_sections ) do %>
+											<span class="glyphicon glyphicon-list-alt"></span> All Sections
+										<% end %>
+
+										<%= link_to view_public_url(@page.permalink), :class => 'btn btn-default btn-sm' do %>
+											<span class="glyphicon glyphicon-cloud"></span> View Public
+										<% end %>
+									</div><!-- End Btn-Group -->
+								</div><!-- End Col -->
+								<div class="col-xs-2">
+								<%= link_to(new_section_url(:subject_id => @page.subject, :page_id => @page.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
+										<span class="glyphicon glyphicon-file"></span> New Section
+								<% end %>
+							</div><!-- End Col -->
+							</div>	<!-- End Row -->
+								
 							
-							<%= link_to({:page_id => @page.next}, :class => 'btn btn-default btn-sm'+ check_last_page) do %> 
-								Next <span class="glyphicon glyphicon-chevron-right"></span> 
-							<% end %>
-
-							<%= link_to({:subject_id => @page.subject.next, :page_id => @page.next_subj}, :class => 'btn btn-default btn-sm'+ check_last_subj ) do %>
-								Next Subject <span class="glyphicon glyphicon-chevron-right"></span> 
-							<% end %>
-
-							<%= link_to({:action => 'index', :subject_id => nil, :page_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_sections ) do %>
-								<span class="glyphicon glyphicon-list-alt"></span> All Sections
-							<% end %>
-
-							<%= link_to view_public_url(@page.permalink), :class => 'btn btn-default btn-sm' do %>
-							<span class="glyphicon glyphicon-cloud"></span> View Public Page 
-							<% end %>
-						</div>	
-						
-						<%= link_to(new_section_url(:subject_id => @page.subject, :page_id => @page.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
-								<span class="glyphicon glyphicon-file"></span> New Section
-						<% end %>
-						
-						<!-- Search Form -->
-						<div class="col-md-2 pull-right input-group" style="margin-right: 60px;">
-						 	<%= form_for(:section, :method => 'get') do %>
-							    <%= text_field_tag :search, params[:search], :class => 'form-control'%>
-							   <span class="input-group-btn">
-							  	<%= button_tag(type: 'submit', class: 'btn btn-default', name: nil) do %>
-									 <span class="glyphicon glyphicon-search"></span>
-									 <% end %>
-									</span>
-							<% end %>
-						</div><!-- End Search  -->
-						<div class="clearfix"></div>
-						
-
-						<div class="btn-group">
-							
-							
-
-							
-						</div><!-- End Btn-Group -->
-
+								
 					</div><!-- End Panel-Heading -->
 					<div class="panel-body">
 						<div class="tab-content">
@@ -75,6 +66,7 @@
 										<thead>
 											<tr>
 												<th class="text-center col-md-1"><a href="#tab2" class="btn btn-primary btn-sm" data-toggle="tab">View Edits</a></th>
+												<th class="text-center">Page Name</th>
 												<th class="text-center">Section Name</th>
 												<th class="text-center">Content Type</th>
 												<th class="text-center">Visible</th>
@@ -87,6 +79,9 @@
 													<% @last_edit= section.section_edits.last %>
 													<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
 														<%= section.position %>
+													</td>
+													<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+														<%= section.page.name %>
 													</td>
 													<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
 														<%= section.name %>
@@ -177,9 +172,8 @@
 							<%= will_paginate @sections, renderer: BootstrapPagination::Rails, :class => 'pagination', :previous_label => '<span class="glyphicon glyphicon-chevron-left"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right"></span>' %>
 						</div><!-- End Pagination -->
 				</div><!-- End Panel -->
-				
-			</div><!-- End Col -->
-	</div><!-- End Row -->
+		</div><!-- End Col -->
+	</div><!-- End Row -->					
 </div><!-- End Container -->
 
 
