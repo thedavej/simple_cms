@@ -184,6 +184,14 @@ span.inactive {
 	max-width: 150px;
 }
 
+.page_info	{
+	margin-top: 10px;
+}
+
+.pagination {
+    margin: 4px 0 0 0;
+}
+
 #photo {
   position: relative;
   top: 70px;
