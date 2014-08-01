@@ -125,7 +125,10 @@ End Navbar Customizations */
 
 .section {
 	padding-left: 60px;
+}
 
+.back-to-top {
+	font-size: 14px;
 }
 
 aside h3 {
