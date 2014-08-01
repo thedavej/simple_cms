@@ -31,21 +31,16 @@
 								<td><%= admin_user.name %></td>
 								<td><%= admin_user.username %></td>
 								<td><%= mail_to(admin_user.email) %></td>
-								<td class="actions">
-									<div class="btn-group">
-										<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">Actions 
-									      <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
-								    </button>
-								    <ul class="dropdown-menu" role="menu">
-								    	<li class="dropdown-header"><%= admin_user.name %></li>
-								    	<li>
-								    		<%= link_to("Edit", {:action => 'edit', :id => admin_user.id}, :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
-								      </li>
-								      <li>
-												<%= link_to("Delete", {:action => 'delete', :id => admin_user.id}, :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
-								      </li>
-								    </ul>
-								  </div>
+								<td style ="text-align: center;">
+					    		<div class="btn-group">
+						    		<% if admin_user.id == 1 %>
+						    			DJ may not be modified!
+						    		<% else %>
+						    			<%= link_to("Edit", {:action => 'edit', :id => admin_user.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+						      
+											<%= link_to("Delete", {:action => 'delete', :id => admin_user.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
+						      	<% end %>
+						      </div>
 								</td>
 							</tr>
 							<% end %>
