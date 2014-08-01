@@ -9,6 +9,7 @@
 								'em', 'a', 'br', 'p', 'img', 'div',
 								 'h1', 'h2', 'h3', 'h4'])) %>
 					</p>
+					
 					<% if session[:username] %>
 						<p>
 							<%= link_to({:controller => 'sections', 
@@ -21,7 +22,7 @@
 						<a href="#sectionLoginModal" role="button" class="btn btn-primary btn-lg" data-toggle="modal">
 							<span class="glyphicon glyphicon-edit"></span> Edit Page</a>
 					<% end %>
-				</div>
+				</div><!-- End Jumbotron -->
 		<% end %><!-- End Content Jumbotron Check -->
 	<% end %><!-- End Loop -->
 		<div class="row">
@@ -32,18 +33,18 @@
 						<div class="section">
 							<h2 id="section-<%= section.name %>">
 								<%= section.name %>
-							</h2>
 							<% if section != @page.sections.is_article.visible.sorted.first %>
-								<div class="back-to-top">
-									<h4><a href="#top">[back to top]</a></h4>
-								</div>
+								<span class="back-to-top">
+									<a href="#top"> [back to top]</a>
+								</span>
 							<% end %>
+							</h2>
 							<% @last_edit = section.section_edits.last %>
 							<div class="editor">Last edited by <%= @last_edit.editor.name %> on <%= @last_edit.updated_at.localtime.to_s(:nice) %>
 							</div>
 							<%= raw(sanitize(section.content, :tags => ['strong', 
 							'em', 'a', 'br', 'p', 'img', 'div',
-							 'h1', 'h2', 'h3', 'h4', 'ul', 'li', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'style'])) %>
+							 'h1', 'h2', 'h3', 'h4', 'ul', 'li', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'blockquote', 'iframe'])) %>
 						</div><!-- End Section -->
 				<% end %><!-- End Content Article Check -->
 			<% end %><!-- End Loop -->
