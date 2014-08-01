@@ -9,7 +9,7 @@
 			<h2>Update Section</h2>
 
 			<%= form_for(:section, :url => {:action => 'update', 
-				:page_id => @page.id , :id => @section.id}) do |f| %>
+				:page_id => @page.id , :section_id => @section.id}) do |f| %>
 				<%= render(:partial => "form", :locals => {:f => f}) %>
 			<div class="form-buttons">
 				<%= link_to("<< Back to List", {:action => 'index', :page_id => @page.id, :subject_id => @page.subject_id }, :class => 'btn btn-default btn-sm') %>

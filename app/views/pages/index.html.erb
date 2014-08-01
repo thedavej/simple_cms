@@ -8,9 +8,24 @@
 					<% if @all_pages %>
 						<h2>All Pages</h2>
 					<% elsif !@subject.visible %>
-						<h2><%= @subject.name %><span class="inactive"> [This Subject is Not Active]</span></h2>
+						
+						<%= form_for(:subject, :url => {:controller => 'subjects', :action => 'quick_update', :subject_id => @subject.id}) do |f| %>
+							  <%= f.hidden_field :visible, :value => true %>
+									
+								<h2><%= @subject.name %><span class="inactive"> [This Subject is Not Active]</span> &nbsp;&nbsp;&nbsp;<%= button_tag(type: "submit", class: "btn btn-sm	 btn-default", name: "commit") do %>
+    							<span class="glyphicon glyphicon-ok-sign"></span> Activate
+    						<% end %>
+    						</h2>
+							<% end %>
 					<% else %>
-						<h2><%= @subject.name %></h2>
+						<%= form_for(:subject, :url => {:controller => 'subjects', :action => 'quick_update', :subject_id => @subject.id}) do |f| %>
+								  <%= f.hidden_field :visible, :value => false %>
+										
+									<h2><%= @subject.name %> &nbsp;&nbsp;&nbsp;<%= button_tag(type: "submit", class: "btn btn-sm	 btn-default", name: "commit") do %>
+      							<span class="glyphicon glyphicon-ok-sign"></span> Deactivate
+      						<% end %>
+      						</h2>
+								<% end %>
 					<% end %>
 
 					<div class="row">

@@ -54,6 +54,12 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def quick_update
+    @subject = Subject.find(params[:subject_id])
+    @subject.update_attributes(subject_params)
+    redirect_to(:controller => 'pages', :action => 'index', :subject_id => @subject.id)
+  end
+
   def delete
     @subject = Subject.find(params[:id])
     render action: "delete_modal", layout: "crud_modal"

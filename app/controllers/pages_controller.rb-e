@@ -67,6 +67,13 @@ class PagesController < ApplicationController
     end
   end
 
+   def quick_update
+    @page = Page.find(params[:page_id])
+    @page.update_attributes(pages_params)
+    @page.editors << AdminUser.find(session[:user_id])
+    redirect_to(:controller => 'sections', :action => 'index', :id => @page.id, :subject_id => @subject.id)
+  end
+
   def delete
     @page = Page.find(params[:page_id])
     render action: "delete_modal", layout: "crud_modal"
