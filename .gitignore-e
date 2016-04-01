@@ -33,3 +33,8 @@
 # Ignore database.yml
 # /config/database.yml
 
+Cheffile
+Cheffile.lock
+Vagrantfile
+cookbooks/
+.vagrant/
