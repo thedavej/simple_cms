@@ -13,13 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20140711202503) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admin_users", force: true do |t|
     t.string   "first_name",      limit: 25
     t.string   "last_name",       limit: 50
     t.string   "email",           limit: 100, default: "", null: false
-    t.string   "username",        limit: 25
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username",        limit: 25
     t.string   "password_digest"
   end
 
