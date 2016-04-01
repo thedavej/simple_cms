@@ -1,86 +1,86 @@
 <% @page_title = "Subjects List" %>
 
-	<div class="container clearfix">
-		<div class="row">
-		  <div class="col-xs-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2>Subjects</h2>
-						
-						<div class="row">
-							<div class="col-xs-10">
-								<div class="btn-group">
-									<%= link_to({:controller => 'access', :action => 'index'}, :class => 'btn btn-default btn-sm pull-left') do %>
-									<span class="glyphicon glyphicon-chevron-left"></span> Back to Main Menu
-									<% end %>
-								</div>
-							</div><!-- End Col -->
-							<div class="col-xs-2">
-								<%= link_to({:action => 'new'}, :class => 'pull-right btn btn-success btn-sm', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
-									<span class="glyphicon glyphicon-file"></span> New Subject
-								<% end %>
-							</div><!-- End Col -->
-						</div><!-- End Row -->	
-					</div><!-- End Panel-Heading -->
-					<div class="panel-body">
-						<div class="table responsive">
-							<table class ="table table-hover table-striped table-bordered table-condensed" summary="Subject list">
-								<thead>
-									<th class="text-center col-md-1">&nbsp;</th>
-									<th class="text-center">Subject</th>
-									<th class="text-center"> Pages</th>
-									<th class="text-center">Status</th>
-									<th></th>
-									<th></th>
-									<th class ="text-center col-md-2">Actions</th>
-								</thead>
-								<tbody>
-								<% @subjects.each do |subject| %>
-								<tr class="text-center <%= check_inactive(subject) %> ">
-									<td data-link="<%= view_pages_path(subject.id) %>">
-										<%= subject.position %>
-									</td>
-									<td data-link="<%= view_pages_path(subject.id) %>">
-										<%= subject.name %>
-									</td>
-									<td data-link="<%= view_pages_path(subject.id) %>" class="center">
-										<%= subject.pages.size %>
-									</td>
-									<td data-link="<%= view_pages_path(subject.id) %>" class="center">
-										<%= status_tag(subject.visible) %>
-									</td>
-									<td data-link="<%= view_pages_path(subject.id) %>"></td>
-									<td data-link="<%= view_pages_path(subject.id) %>"></td>
-									<td style="text-align: center;">
-										<div class="btn-group">
-									    <%= link_to("Show", {:action => 'show', :id => subject.id},:class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
-									    <%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
-									    <%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
-									  </div>
-									</td>
-								</tr>
-								<% end %>
-								</tbody>
-							</table>
-						</div><!-- End Table-Resoonsive -->
-					</div><!-- End Panel-Body -->
-					<div class="panel-footer">
-						<div class="page_info">
-      				<%= page_entries_info @subjects %>
-   					</div>
-					  
-						<div class="pull-right">
-							<%= will_paginate @collection, renderer: BootstrapPagination::Rails, :previous_label => '<span class="glyphicon glyphicon-chevron-left"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right"></span>' %>
-						</div><!-- End Pagination -->
-					</div><!-- End Panel-Footer -->
-				</div><!-- End Panel -->
-		
-	
+    <div class="container clearfix">
+        <div class="row">
+          <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>Subjects</h2>
 
-		  <div class="clearfix"></div>
-	  
-	  	</div><!-- End Col -->
-		</div><!-- End Row -->
-	</div><!-- End Container -->
-            
-	<%= render(:partial => 'layouts/modal_containers') %>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <div class="btn-group">
+                                    <%= link_to({:controller => 'access', :action => 'index'}, :class => 'btn btn-default btn-sm pull-left') do %>
+                                    <span class="glyphicon glyphicon-chevron-left"></span> Back to Main Menu
+                                    <% end %>
+                                </div>
+                            </div><!-- End Col -->
+                            <div class="col-xs-2">
+                                <%= link_to({:action => 'new'}, :class => 'pull-right btn btn-success btn-sm', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
+                                    <span class="glyphicon glyphicon-file"></span> New Subject
+                                <% end %>
+                            </div><!-- End Col -->
+                        </div><!-- End Row -->
+                    </div><!-- End Panel-Heading -->
+                    <div class="panel-body">
+                        <div class="table responsive">
+                            <table class ="table table-hover table-striped table-bordered table-condensed" summary="Subject list">
+                                <thead>
+                                    <th class="text-center col-md-1">&nbsp;</th>
+                                    <th class="text-center">Subject</th>
+                                    <th class="text-center"> Pages</th>
+                                    <th class="text-center">Status</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th class ="text-center col-md-2">Actions</th>
+                                </thead>
+                                <tbody>
+                                <% @subjects.each do |subject| %>
+                                <tr class="text-center <%= check_inactive(subject) %> ">
+                                    <td data-link="<%= view_pages_path(subject.id) %>">
+                                        <%= subject.position %>
+                                    </td>
+                                    <td data-link="<%= view_pages_path(subject.id) %>">
+                                        <%= subject.name %>
+                                    </td>
+                                    <td data-link="<%= view_pages_path(subject.id) %>" class="center">
+                                        <%= subject.pages.size %>
+                                    </td>
+                                    <td data-link="<%= view_pages_path(subject.id) %>" class="center">
+                                        <%= status_tag(subject.visible) %>
+                                    </td>
+                                    <td data-link="<%= view_pages_path(subject.id) %>"></td>
+                                    <td data-link="<%= view_pages_path(subject.id) %>"></td>
+                                    <td style="text-align: center;">
+                                        <div class="btn-group">
+                                        <%= link_to("Show", {:action => 'show', :id => subject.id},:class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
+                                        <%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
+                                        <%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'btn btn-default btn-xs', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
+                                      </div>
+                                    </td>
+                                </tr>
+                                <% end %>
+                                </tbody>
+                            </table>
+                        </div><!-- End Table-Resoonsive -->
+                    </div><!-- End Panel-Body -->
+                    <div class="panel-footer">
+                        <div class="page_info">
+                    <%= page_entries_info @subjects %>
+                    </div>
+
+                        <div class="pull-right">
+                            <%= will_paginate @collection, renderer: BootstrapPagination::Rails, :previous_label => '<span class="glyphicon glyphicon-chevron-left"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right"></span>' %>
+                        </div><!-- End Pagination -->
+                    </div><!-- End Panel-Footer -->
+                </div><!-- End Panel -->
+
+
+
+          <div class="clearfix"></div>
+
+        </div><!-- End Col -->
+        </div><!-- End Row -->
+    </div><!-- End Container -->
+
+    <%= render(:partial => 'layouts/modal_containers') %>
