@@ -10,7 +10,7 @@
 							<% elsif !@page.visible %>
 								<%= form_for(:page, :url => {:controller => 'pages', :action => 'quick_update', :page_id => @page.id, :subject_id => @page.subject.id}) do |f| %>
 								  <%= f.hidden_field :visible, :value => true %>
-										
+
 									<h2><%= @page.name %> | <span class="inactive">[This Page is Not Active] </span> &nbsp;&nbsp;&nbsp;<%= button_tag(type: "submit", class: "btn btn-sm	 btn-default", name: "commit") do %>
       							<span class="glyphicon glyphicon-ok-sign"></span> Activate
       						<% end %>
@@ -19,14 +19,14 @@
 							<% else %>
 								<%= form_for(:page, :url => {:controller => 'pages', :action => 'quick_update', :page_id => @page.id, :subject_id => @page.subject.id}) do |f| %>
 								  <%= f.hidden_field :visible, :value => false %>
-										
+
 									<h2><%= @page.name %> | Sections &nbsp;&nbsp;&nbsp;<%= button_tag(type: "submit", class: "btn btn-sm	 btn-default", name: "commit") do %>
       							<span class="glyphicon glyphicon-ok-sign"></span> Deactivate
       						<% end %>
       						</h2>
 								<% end %>
 						<% end %>
-		
+
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="btn-group">
@@ -38,20 +38,20 @@
 									<% end %>
 
 									<%= link_to({:subject_id => @page.subject.next, :page_id => @page.next_subj}, :class => 'btn btn-default btn-sm'+ check_last_subj ) do %>
-										Subject <span class="glyphicon glyphicon-chevron-right"></span> 
+										Subject <span class="glyphicon glyphicon-chevron-right"></span>
 									<% end %>
-								
+
 									<%= link_to({:page_id => @page.prev}, :class => 'btn btn-default btn-sm'+ check_first_page ) do %>
 										<span class="glyphicon glyphicon-chevron-left"></span> Page
 									<% end %>
-									
-									<%= link_to({:page_id => @page.next}, :class => 'btn btn-default btn-sm'+ check_last_page) do %> 
-										Page <span class="glyphicon glyphicon-chevron-right"></span> 
+
+									<%= link_to({:page_id => @page.next}, :class => 'btn btn-default btn-sm'+ check_last_page) do %>
+										Page <span class="glyphicon glyphicon-chevron-right"></span>
 									<% end %>
 								</div><!-- End Btn-Group -->
 							</div><!-- End Col -->
 						</div><!-- End Row -->
-							
+
 							<div class="row">
 								<div class="col-xs-10">
 									<div class="btn-group">
@@ -70,9 +70,9 @@
 								<% end %>
 							</div><!-- End Col -->
 							</div>	<!-- End Row -->
-								
-							
-								
+
+
+
 					</div><!-- End Panel-Heading -->
 					<div class="panel-body">
 						<div class="tab-content">
@@ -113,7 +113,7 @@
 															<%= link_to("Show", show_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
 															<%= link_to("Edit", edit_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
 															<%= link_to("Delete", delete_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
-															
+
 													  </div>
 													</td>
 												</tr>
@@ -153,24 +153,28 @@
 													<%= section.section_edits.first.created_at.localtime.to_s(:abbrev) %>
 												</td>
 												<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
+												<% if @last_edit.editor %>
 													<%= @last_edit.editor.name %>
+												<% else %>
+													<i>editor deleted</i>
+												<% end %>
 												</td>
 												<td data-link="<%= view_public_path(section.page.permalink, :anchor => 'section-'+ section.name) %>">
 													<%= @last_edit.updated_at.localtime.to_s(:abbrev) %>
 												</td>
-												
+
 												<td style ="text-align: center;">
 													<div class="btn-group">
 														<%= link_to("Show", show_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Show', :toggle => 'modal', :target => '#show', :placement => 'top'}, :rel => 'tooltip') %>
 														<%= link_to("Edit", edit_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Edit', :toggle => 'modal', :target => '#edit', :placement => 'top'}, :rel => 'tooltip') %>
 														<%= link_to("Delete", delete_section_url(:subject_id => @page.subject.id, :page_id => @page.id, :section_id => section.id), :class => 'btn btn-default btn-xs', :data => {:title => 'Delete', :toggle => 'modal', :target => '#delete', :placement => 'top'}, :rel => 'tooltip') %>
-														
+
 												  </div>
 												</td>
 											</tr>
 										<% end %>
 										</tbody>
-									</table>	
+									</table>
 								</div><!-- End Table-Responsive -->
 							</div><!-- End Tab 2 Pane-->
 						</div><!-- End Tab Content -->
@@ -188,14 +192,14 @@
 								</div><!-- End Pagination -->
 							</div>
 						</div><!-- End Row -->
-								 
-		   					 
-								 
+
+
+
 					</div><!-- End Panel-Footer -->
-					
+
 				</div><!-- End Panel -->
 		</div><!-- End Col -->
-	</div><!-- End Row -->					
+	</div><!-- End Row -->
 </div><!-- End Container -->
 
 

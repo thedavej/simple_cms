@@ -44,7 +44,7 @@
                                         <%= subject.name %>
                                     </td>
                                     <td data-link="<%= view_pages_path(subject.id) %>" class="center">
-                                        <%= subject.pages.size %>
+                                        <%= subject.pages.all.size %>
                                     </td>
                                     <td data-link="<%= view_pages_path(subject.id) %>" class="center">
                                         <%= status_tag(subject.visible) %>

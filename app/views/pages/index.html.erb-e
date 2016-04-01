@@ -8,10 +8,10 @@
 					<% if @all_pages %>
 						<h2>All Pages</h2>
 					<% elsif !@subject.visible %>
-						
+
 						<%= form_for(:subject, :url => {:controller => 'subjects', :action => 'quick_update', :subject_id => @subject.id}) do |f| %>
 							  <%= f.hidden_field :visible, :value => true %>
-									
+
 								<h2><%= @subject.name %><span class="inactive"> [This Subject is Not Active]</span> &nbsp;&nbsp;&nbsp;<%= button_tag(type: "submit", class: "btn btn-sm	 btn-default", name: "commit") do %>
     							<span class="glyphicon glyphicon-ok-sign"></span> Activate
     						<% end %>
@@ -20,7 +20,7 @@
 					<% else %>
 						<%= form_for(:subject, :url => {:controller => 'subjects', :action => 'quick_update', :subject_id => @subject.id}) do |f| %>
 								  <%= f.hidden_field :visible, :value => false %>
-										
+
 									<h2><%= @subject.name %> &nbsp;&nbsp;&nbsp;<%= button_tag(type: "submit", class: "btn btn-sm	 btn-default", name: "commit") do %>
       							<span class="glyphicon glyphicon-ok-sign"></span> Deactivate
       						<% end %>
@@ -35,11 +35,11 @@
 										<span class="glyphicon glyphicon-chevron-left"></span> Back to Subjects
 									<% end %>
 									<%= link_to({:subject_id => @subject.prev}, :class => 'btn btn-default btn-sm'+ check_first_subject ) do %>
-										<span class="glyphicon glyphicon-chevron-left"></span> Subject 
+										<span class="glyphicon glyphicon-chevron-left"></span> Subject
 									<% end %>
 
 									<%= link_to({:subject_id => @subject.next}, :class => 'btn btn-default btn-sm'+ check_last_subject ) do %>
-										Subject <span class="glyphicon glyphicon-chevron-right"></span> 
+										Subject <span class="glyphicon glyphicon-chevron-right"></span>
 									<% end %>
 
 									<%= link_to({:action => 'index', :subject_id => nil}, :class => 'btn btn-default btn-sm'+ check_all_subjects ) do %>
@@ -47,13 +47,13 @@
 									<% end %>
 								</div>
 							</div><!-- End Col -->
-							
+
 							<div class="col-xs-2">
 								<%= link_to(new_page_url(:subject_id => @subject.id), :class => 'btn btn-success btn-sm pull-right', :data => {:title => 'Show', :toggle => 'modal', :target => '#new', :placement => 'top'}, :rel => 'tooltip') do %>
 										<span class="glyphicon glyphicon-file"></span> New Page
 								<% end %>
 							</div><!-- End Col -->
-						</div><!-- End Row -->	
+						</div><!-- End Row -->
 				</div><!-- End Panel-Heading -->
 				<div class="panel-body">
 					<div class="table-responsive">
@@ -80,7 +80,7 @@
 										<%= page.name %>
 									</td>
 									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
-										<%= page.sections.size %>
+										<%= page.sections.all.size %>
 									</td>
 									<td data-link="<%= view_sections_path(page.subject.id, page.id) %>" class="center">
 										<%= page.permalink %>
