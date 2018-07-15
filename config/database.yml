@@ -24,7 +24,7 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  pool: secret
+  pool: 5
   username: simple_cms
   password: secret
 
