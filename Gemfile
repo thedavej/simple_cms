@@ -17,7 +17,7 @@ gem 'awesome_print', '~> 1.2.0', group: :development
 gem 'sass-rails', '~> 4.0.3'
 
 # Use Bootstrap-Sass
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.2.0.4'
 
 # Use Will Paginate
 gem 'will_paginate', '~> 3.0'
@@ -72,4 +72,3 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
