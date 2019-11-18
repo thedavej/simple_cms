@@ -34,8 +34,9 @@ GEM
       execjs
     awesome_print (1.2.0)
     bcrypt (3.1.12)
-    bootstrap-sass (3.2.0.4)
-      sass (~> 3.2)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.3)
     carrierwave (1.2.3)
       activemodel (>= 4.0.0)
@@ -51,6 +52,7 @@ GEM
     concurrent-ruby (1.0.5)
     erubis (2.7.0)
     execjs (2.7.0)
+    ffi (1.11.2)
     hike (1.2.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -98,6 +100,8 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    sassc (2.2.1)
+      ffi (~> 1.9)
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -134,7 +138,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print (~> 1.2.0)
   bcrypt (~> 3.1.7)
-  bootstrap-sass (~> 3.2.0.4)
+  bootstrap-sass (~> 3.4.1)
   carrierwave
   coffee-rails (~> 4.0.1)
   jquery-rails
