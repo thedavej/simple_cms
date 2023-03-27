@@ -41,7 +41,7 @@ gem 'pg', '~> 0.17.1'
 gem 'rails_12factor', group: :production
 
 # Use Uglifier
-gem 'uglifier', '~> 2.5.3'
+gem 'uglifier', '~> 2.7.2'
 
 # Use CoffeeScript for .js.coffee assets and views
  gem 'coffee-rails', '~> 4.0.1'
