@@ -52,7 +52,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
     erubis (2.7.0)
-    execjs (2.7.0)
+    execjs (2.8.1)
     ffi (1.11.2)
     hike (1.2.3)
     i18n (0.9.5)
@@ -125,7 +125,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
-    uglifier (2.5.3)
+    uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     will_paginate (3.1.6)
@@ -151,7 +151,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
-  uglifier (~> 2.5.3)
+  uglifier (~> 2.7.2)
   will_paginate (~> 3.0)
   will_paginate-bootstrap
 
