@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.11.3'
 
 
 # Use mysql as the database for Active Record
@@ -14,7 +14,7 @@ gem 'acts_as_list', '~> 0.4.0'
 gem 'awesome_print', '~> 1.2.0', group: :development
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 6.0.0'
 
 # Use Bootstrap-Sass
 gem 'bootstrap-sass', '~> 3.4.1'
